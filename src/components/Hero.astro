@@ -1,113 +1,60 @@
 ---
 import Checker from './Checker.astro';
-import Marquee from './Marquee.astro';
-
-const profilePic = 'https://scontent-ams2-1.cdninstagram.com/v/t51.82787-19/616235104_17913448284266823_7616257522537543457_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=109&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=Y6m5MGA-af4Q7kNvwEaaf8s&_nc_oc=AdoJYDmk00uO0U8jOWQmT_xgORL8ewmPPkv55QnIWQUEQJS4gD-HdvWGoQIvNKABwLU&_nc_zt=24&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=9zWxO4kA-G6T5PIw7a6lHQ&_nc_ss=7ba8c&oh=00_AQP8MVo4Z9DVcT9j5c_h2SQAtIev1cWF09Wlb0hFaPI2Cg&oe=6AC1F8FA';
-const instagramUrl = 'https://www.instagram.com/refresh.baghdad/';
-const phoneLink = 'tel:+9647739999038';
-const IMG = {
-  matcha: 'https://scontent-ams2-1.cdninstagram.com/v/t51.82787-15/794032623_17948492067266823_7578226426693012433_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=NYjctEAvy7cQ7kNvwFHmiSP&_nc_oc=Adph5_RVWf2icuScJwmhAxHO8P_RB8oZUWFhxo62FNyTEbrzne6WhCP-EQgxmMBZNo4&_nc_zt=23&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=cO0pZhQ1iJyLHDhTQ7H9Fw&_nc_ss=7ba8c&oh=00_AQNZ0AR79KsE0exUGsrTSfuBfJpq0kzO5sgxGTwTZIa6AA&oe=6AC1E3F9',
-  latte: 'https://scontent-ams2-1.cdninstagram.com/v/t51.82787-15/776718665_17946476757266823_3092288458190742280_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=Z3Cwie8nHwkQ7kNvwEwnhC4&_nc_oc=AdrQtodvlccHUvaeHo7b2bHkP3djMDX5TGMqNPIEaS9OoQkSxtvSUUBXLkte7oWjd2U&_nc_zt=23&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=cO0pZhQ1iJyLHDhTQ7H9Fw&_nc_ss=7ba8c&oh=00_AQPZHPFo9YZI5fw4pcYvmq97sLXDnxDJuow6lCPZGeA_5w&oe=6AC1E3AE',
-  shake: 'https://scontent-ams2-1.cdninstagram.com/v/t51.82787-15/779145745_17946355131266823_6141674129459981372_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=ZCuU1PJApxgQ7kNvwER0Rna&_nc_oc=AdrMjokD5-9uOyDrezyV0GHSK0I8cT2KHL-hJPKOoiu3Raqa6aSXuijd5D9o71n3MsM&_nc_zt=23&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=cO0pZhQ1iJyLHDhTQ7H9Fw&_nc_ss=7ba8c&oh=00_AQOEJxRfbfvpkJTM8TPNKFYqjff2Qld_qrU6S8fEcTIBzw&oe=6AC1F0DE'
-};
+const matcha = "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-15/794032623_17948492067266823_7578226426693012433_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=NYjctEAvy7cQ7kNvwFHmiSP&_nc_oc=Adph5_RVWf2icuScJwmhAxHO8P_RB8oZUWFhxo62FNyTEbrzne6WhCP-EQgxmMBZNo4&_nc_zt=23&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=cO0pZhQ1iJyLHDhTQ7H9Fw&_nc_ss=7ba8c&oh=00_AQNZ0AR79KsE0exUGsrTSfuBfJpq0kzO5sgxGTwTZIa6AA&oe=6AC1E3F9";
+const milkshake = "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-15/779145745_17946355131266823_6141674129459981372_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=ZCuU1PJApxgQ7kNvwER0Rna&_nc_oc=AdrMjokD5-9uOyDrezyV0GHSK0I8cT2KHL-hJPKOoiu3Raqa6aSXuijd5D9o71n3MsM&_nc_zt=23&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=cO0pZhQ1iJyLHDhTQ7H9Fw&_nc_ss=7ba8c&oh=00_AQOEJxRfbfvpkJTM8TPNKFYqjff2Qld_qrU6S8fEcTIBzw&oe=6AC1F0DE";
 ---
+<section id="top" class="relative bg-butter overflow-hidden pt-32 md:pt-40 pb-24 md:pb-32">
+  <div class="absolute top-24 right-6 md:top-32 md:right-16 opacity-90">
+    <Checker colorA="bg-butterStrong" colorB="bg-lavender" cols={5} rows={4} size="w-3 h-3 md:w-4 md:h-4" />
+  </div>
 
-<header class="fixed inset-x-4 top-4 z-50">
-  <nav class="mx-auto flex max-w-6xl items-center justify-between rounded-full border-2 border-anchor bg-cream/95 px-4 py-2.5 shadow-soft backdrop-blur" aria-label="Main navigation">
-    <div class="hidden items-center gap-6 lg:flex">
-      <a href="#about" class="font-mono text-xs uppercase tracking-[0.2em] transition hover:text-butter-dark">About</a>
-      <a href="#menu" class="font-mono text-xs uppercase tracking-[0.2em] transition hover:text-butter-dark">Menu</a>
-      <a href="#visit" class="font-mono text-xs uppercase tracking-[0.2em] transition hover:text-butter-dark">Visit</a>
-    </div>
-    <a href="#top" class="absolute left-1/2 -translate-x-1/2" aria-label="Refresh Cafe home">
-      <img src={profilePic} alt="Refresh Cafe logo" class="h-11 w-11 rounded-full border-2 border-anchor object-cover transition duration-300 hover:rotate-6 md:h-14 md:w-14" />
-    </a>
-    <div class="flex items-center gap-3">
-      <a href={instagramUrl} target="_blank" rel="noreferrer" class="hidden h-10 w-10 items-center justify-center rounded-full border-2 border-anchor bg-butter text-anchor transition hover:-translate-y-1 hover:shadow-hard lg:flex" aria-label="Visit Refresh Cafe on Instagram">
-        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-      </a>
-      <a href={phoneLink} class="hidden h-10 items-center rounded-full border-2 border-anchor bg-pinkpop px-4 font-mono text-xs font-bold uppercase tracking-wider transition hover:-translate-y-1 hover:shadow-hard lg:flex">Call</a>
-      <button id="menu-toggle" class="flex h-11 w-11 items-center justify-center rounded-full border-2 border-anchor bg-cream lg:hidden" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
-        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
-      </button>
-    </div>
-  </nav>
-  <div id="mobile-menu" class="fixed left-4 right-4 top-24 hidden rounded-3xl border-2 border-anchor bg-butter p-6 shadow-hard">
-    <nav class="flex flex-col gap-4" aria-label="Mobile navigation">
-      <a href="#about" class="font-display text-3xl uppercase text-anchor">About</a>
-      <a href="#menu" class="font-display text-3xl uppercase text-anchor">Menu</a>
-      <a href="#craft" class="font-display text-3xl uppercase text-anchor">Craft</a>
-      <a href="#visit" class="font-display text-3xl uppercase text-anchor">Visit</a>
-      <a href={phoneLink} class="mt-4 inline-flex items-center justify-center rounded-full border-2 border-anchor bg-anchor px-5 py-3 font-mono text-xs uppercase tracking-widest text-cream">Call us</a>
-    </nav>
-  </div>
-</header>
+  <div class="absolute -top-20 right-0 w-[520px] h-[520px] bg-cream rounded-blob blur-0 opacity-70 -z-0"></div>
 
-<section id="top" class="relative overflow-hidden bg-butter pb-28 pt-32 lg:pb-32 lg:pt-44">
-  <div class="pointer-events-none absolute right-8 top-20 hidden lg:block">
-    <Checker variant="lavender-butter" className="rotate-6 opacity-80" />
-  </div>
-  <div class="pointer-events-none absolute bottom-24 left-6 hidden lg:block">
-    <Checker variant="pink-butter" size="sm" className="-rotate-6 opacity-60" />
-  </div>
-  <div class="mx-auto max-w-7xl px-4 lg:px-8">
-    <div class="grid items-center gap-14 lg:grid-cols-12">
-      <div class="lg:col-span-5">
-        <p class="mb-4 font-mono text-xs font-bold uppercase tracking-[0.35em] text-anchor">Baghdad's First Diet Café</p>
-        <h1 class="font-display text-6xl uppercase leading-[0.95] md:text-7xl xl:text-8xl">
-          <span class="reveal block">Good for you.</span>
-          <span class="reveal block text-butter-dark" style="transition-delay:80ms">Tastes even better.</span>
-        </h1>
-        <p class="reveal mt-6 max-w-md text-base leading-relaxed text-anchor/80 md:text-lg" style="transition-delay:160ms">
-          Specialty matcha, cold brew, diet lattes and date shakes — made to balance real pleasure with better-for-you ingredients. Refresh, without the guilt.
-        </p>
-        <div class="reveal mt-8 flex flex-wrap items-center gap-4" style="transition-delay:240ms">
-          <a href="#menu" class="group inline-flex items-center gap-2 rounded-full border-2 border-anchor bg-butter-dark px-7 py-3 font-mono text-xs font-bold uppercase tracking-widest text-anchor shadow-hard transition hover:-translate-y-1 hover:shadow-[6px_6px_0_0_#2A170D]">
-            Explore the menu
-            <span class="grid h-7 w-7 place-items-center rounded-full bg-anchor text-cream transition group-hover:rotate-45">
-              <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-          <a href={instagramUrl} target="_blank" rel="noreferrer" class="font-mono text-xs font-bold uppercase tracking-widest underline decoration-2 underline-offset-4 transition hover:text-butter-dark">View on Instagram</a>
-        </div>
-        <div class="reveal mt-12 grid max-w-md grid-cols-3 divide-x divide-anchor/30 border-t-2 border-anchor pt-6" style="transition-delay:320ms">
-          <div class="pr-4">
-            <p class="font-display text-4xl">5.0<span class="text-butter-dark">★</span></p>
-            <p class="font-mono text-[10px] uppercase tracking-widest">Google rating</p>
-          </div>
-          <div class="px-4">
-            <p class="font-display text-4xl">3.5K+</p>
-            <p class="font-mono text-[10px] uppercase tracking-widest">IG community</p>
-          </div>
-          <div class="pl-4">
-            <p class="font-display text-4xl">5</p>
-            <p class="font-mono text-[10px] uppercase tracking-widest">Google reviews</p>
-          </div>
-        </div>
+  <div class="max-w-[1300px] mx-auto px-5 md:px-8 relative grid md:grid-cols-2 gap-10 items-center">
+    <div class="relative z-10">
+      <p class="font-mono uppercase text-xs md:text-sm tracking-[0.2em] text-anchorSoft mb-4">Baghdad's First Diet Cafe</p>
+      <h1 class="font-display uppercase text-anchor leading-[0.92] text-[13vw] md:text-[5.2vw] tracking-tight">
+        Real Flavor.<br/>Zero Guilt.
+      </h1>
+      <p class="mt-6 max-w-md text-anchorSoft text-base md:text-lg">
+        Iced matcha, diet lattes and date-sweet milkshakes — every cup at Refresh is built for balance, not sacrifice.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center gap-4">
+        <a href="#menu" class="group inline-flex items-center gap-3 bg-butterStrong border-2 border-anchor text-anchor font-mono uppercase text-sm font-bold px-6 py-3 rounded-full shadow-[4px_4px_0_0_#2C1B10] hover:shadow-[6px_6px_0_0_#2C1B10] hover:-translate-y-0.5 transition-all">
+          See The Menu
+          <span class="w-6 h-6 rounded-full bg-anchor text-cream flex items-center justify-center group-hover:translate-x-1 transition-transform">→</span>
+        </a>
+        <a href="https://maps.google.com/?q=Refresh+Cafe+Baghdad" target="_blank" rel="noopener" class="font-mono uppercase text-sm font-bold underline underline-offset-4 hover:text-pinkDark inline-flex items-center gap-1">
+          Get Directions →
+        </a>
       </div>
-      <div class="relative lg:col-span-7">
-        <div class="relative mx-auto mt-10 max-w-md lg:mx-0 lg:ml-auto lg:mt-0 lg:max-w-none">
-          <div class="absolute left-1/2 top-1/2 h-[85%] w-[85%] -translate-x-1/2 -translate-y-1/2 rounded-[45%_55%_60%_40%/50%_60%_40%_50%] bg-butter-light"></div>
-          <img src={IMG.matcha} alt="Iced matcha drink at Refresh Cafe" class="reveal relative z-10 mx-auto aspect-square w-72 -rotate-3 rounded-[45%_55%_60%_40%/55%_45%_60%_40%] border-4 border-anchor object-cover shadow-hard lg:w-[26rem]" />
-          <img src={IMG.latte} alt="Diet latte from Refresh Cafe" class="reveal absolute bottom-0 left-0 z-20 aspect-square w-40 -rotate-6 rounded-[55%_45%_60%_40%/50%_60%_40%_50%] border-4 border-anchor object-cover shadow-hard-pink lg:w-52" style="transition-delay:200ms" />
-          <img src={IMG.shake} alt="Date milkshake at Refresh Cafe" class="reveal absolute right-0 top-0 z-20 aspect-square w-36 rotate-6 rounded-[40%_60%_55%_45%/55%_40%_60%_45%] border-4 border-anchor object-cover shadow-hard-lavender lg:w-44" style="transition-delay:300ms" />
-          <span class="absolute right-4 top-4 z-30 rotate-6 rounded-full border-2 border-anchor bg-pinkpop px-4 py-2 font-mono text-[10px] font-bold uppercase tracking-widest shadow-[3px_3px_0_0_#2A170D]">100% Refresh</span>
-          <span class="absolute bottom-8 right-8 z-30 -rotate-6 rounded-full border-2 border-anchor bg-lavenderpop px-4 py-2 font-mono text-[10px] font-bold uppercase tracking-widest shadow-[3px_3px_0_0_#2A170D]">Zero guilt</span>
+
+      <div class="mt-12 flex items-center gap-6 md:gap-10 flex-wrap">
+        <div class="flex flex-col">
+          <span class="font-display text-4xl md:text-5xl text-anchor" data-count="5" data-decimals="1">0</span>
+          <span class="font-mono text-xs uppercase text-anchorSoft mt-1">Google Rating</span>
+        </div>
+        <div class="w-px h-12 bg-anchor/30"></div>
+        <div class="flex flex-col">
+          <span class="font-display text-4xl md:text-5xl text-anchor" data-count="5">0</span>
+          <span class="font-mono text-xs uppercase text-anchorSoft mt-1">5-Star Reviews</span>
+        </div>
+        <div class="w-px h-12 bg-anchor/30"></div>
+        <div class="flex flex-col">
+          <span class="font-display text-4xl md:text-5xl text-anchor" data-count="3.5" data-decimals="1" data-suffix="K+">0</span>
+          <span class="font-mono text-xs uppercase text-anchorSoft mt-1">Instagram Family</span>
         </div>
       </div>
     </div>
-  </div>
-  <div class="relative z-10 mt-20">
-    <Marquee items={['Iced Matcha', 'Cold Brew', 'Diet Latte', 'Date Shake', 'Zero Guilt']} color="pink" />
+
+    <div class="relative h-[380px] md:h-[520px] flex items-center justify-center z-0">
+      <div class="absolute w-72 h-72 md:w-96 md:h-96 bg-cream rounded-blob"></div>
+      <img src={matcha} alt="Refresh Cafe iced matcha, creamy and smooth" width="360" height="360"
+        class="relative rounded-full w-52 h-52 md:w-72 md:h-72 object-cover border-4 border-anchor shadow-[10px_10px_0_0_rgba(44,27,16,0.25)] rotate-[-6deg] animate-float" style="--tilt:-6deg" />
+      <img src={milkshake} alt="Refresh Cafe date milkshake" width="220" height="220"
+        class="absolute bottom-2 right-4 md:right-10 rounded-full w-32 h-32 md:w-44 md:h-44 object-cover border-4 border-anchor shadow-[8px_8px_0_0_rgba(44,27,16,0.25)] rotate-[8deg] animate-float" style="--tilt:8deg; animation-delay:0.4s" />
+      <div class="absolute top-4 left-0 w-6 h-6 rounded-full bg-pink border-2 border-anchor animate-float" style="animation-delay:0.2s"></div>
+      <div class="absolute bottom-16 left-4 w-4 h-4 rounded-sm bg-lavender border-2 border-anchor animate-float" style="animation-delay:0.6s"></div>
+    </div>
   </div>
 </section>
-
-<script>
-  const toggle = document.getElementById('menu-toggle');
-  const menu = document.getElementById('mobile-menu');
-  toggle?.addEventListener('click', () => {
-    const expanded = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!expanded));
-    menu?.classList.toggle('hidden');
-  });
-</script>

@@ -1,21 +1,26 @@
 ---
-const { variant = 'lavender-butter', className = '', size = 'md' } = Astro.props;
-
-const palettes = {
-  'lavender-butter': ['bg-lavenderpop', 'bg-butter'],
-  'pink-butter': ['bg-pinkpop', 'bg-butter'],
-  'dark-cream': ['bg-anchor', 'bg-cream']
-};
-const [c1, c2] = palettes[variant] || palettes['lavender-butter'];
-const sizeClass = size === 'sm' ? 'h-3 w-3' : size === 'lg' ? 'h-6 w-6' : 'h-4 w-4';
-const cells = Array.from({ length: 25 }, (_, i) => ({
-  color: (Math.floor(i / 5) + i) % 2 === 0 ? c1 : c2,
-  delay: i * 25
-}));
+interface Props {
+  colorA?: string;
+  colorB?: string;
+  cols?: number;
+  rows?: number;
+  size?: string;
+  class?: string;
+}
+const { colorA = 'bg-butterStrong', colorB = 'bg-lavender', cols = 8, rows = 2, size = 'w-4 h-4 md:w-5 md:h-5', class: klass = '' } = Astro.props;
+const cells = Array.from({ length: cols * rows });
 ---
-
-<div class={`grid grid-cols-5 gap-1.5 ${className}`} aria-hidden="true">
-  {cells.map((cell, i) => (
-    <div class={`checker-cell ${sizeClass} ${cell.color} rounded-[2px]`} style={{ transitionDelay: `${cell.delay}ms` }}></div>
-  ))}
+<div class={`inline-grid ${klass}`} style={`grid-template-columns: repeat(${cols}, minmax(0,1fr));`}>
+  {cells.map((_, i) => {
+    const row = Math.floor(i / cols);
+    const col = i % cols;
+    const isA = (row + col) % 2 === 0;
+    const delay = (i * 40) % 700;
+    return (
+      <div
+        class={`checker-cell opacity-0 ${size} ${isA ? colorA : colorB}`}
+        style={`transition-delay:${delay}ms;`}
+      ></div>
+    );
+  })}
 </div>

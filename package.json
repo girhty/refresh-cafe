@@ -8,10 +8,9 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "^4.15.1"
-  },
-  "devDependencies": {
-    "@astrojs/tailwind": "^5.1.2",
-    "tailwindcss": "^3.4.13"
+    "astro": "^4.15.0",
+    "@astrojs/tailwind": "^5.1.0",
+    "tailwindcss": "^3.4.10",
+    "autoprefixer": "^10.4.19"
   }
 }

@@ -1,20 +1,18 @@
 ---
-const { items = ['Refresh'], color = 'pink', reverse = false } = Astro.props;
-const bg = color === 'butter' ? 'bg-butter' : color === 'lavender' ? 'bg-lavenderpop' : 'bg-pinkpop';
-const trackClass = reverse ? 'animate-marquee-reverse' : 'animate-marquee';
+interface Props {
+  words: string[];
+  bg?: string;
+  textColor?: string;
+  tilt?: string;
+  reverse?: boolean;
+}
+const { words, bg = 'bg-pink', textColor = 'text-anchor', tilt = '-rotate-2', reverse = false } = Astro.props;
+const line = words.join(' \u2726 ') + ' \u2726 ';
+const repeated = line + line;
 ---
-
-<div class={`relative z-20 -mx-[5vw] w-[110vw] -rotate-2 overflow-hidden border-y-2 border-anchor ${bg} py-3 md:py-4`}>
-  <div class={`marquee-track flex w-max items-center ${trackClass}`}>
-    {[0, 1].map((half) => (
-      <div class="flex shrink-0 items-center" aria-hidden={half === 1 ? 'true' : 'false'}>
-        {items.map((item) => (
-          <span class="flex items-center">
-            <span class="px-4 font-display text-3xl uppercase leading-none text-anchor md:text-5xl">{item}</span>
-            <span class="font-mono text-xl text-anchor md:text-2xl">*</span>
-          </span>
-        ))}
-      </div>
-    ))}
+<div class={`relative w-full overflow-hidden ${bg} border-y-2 border-anchor py-4 md:py-6 ${tilt} scale-110`}>
+  <div class={`flex whitespace-nowrap ${reverse ? 'animate-marqueeRev' : 'animate-marquee'} hover:[animation-play-state:paused]`}>
+    <span class={`font-display uppercase text-3xl md:text-5xl px-3 tracking-tight ${textColor}`}>{repeated}</span>
+    <span class={`font-display uppercase text-3xl md:text-5xl px-3 tracking-tight ${textColor}`}>{repeated}</span>
   </div>
 </div>

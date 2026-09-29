@@ -1,51 +1,109 @@
 ---
-const steps = [
-  { num: "01", label: "SELECT", title: "BEANS & LEAVES WORTH CHOOSING", desc: "We source premium, all-natural ingredients so you get maximum flavor without artificial additives.", img: "https://scontent-ams2-1.cdninstagram.com/v/t15.5256-10/780949353_1596279635189869_1153598757660377946_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74" },
-  { num: "02", label: "PREPARE", title: "MIXED FOR THE CUP", desc: "Every diet drink is carefully measured to keep the calories low and the satisfaction high.", img: "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-15/794032623_17948492067266823_7578226426693012433_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74" },
-  { num: "03", label: "SERVE", title: "MADE WITH CARE", desc: "Served with a smile in our cozy Baghdad spot. Your daily.refresh awaits.", img: "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-15/776718665_17946476757266823_3092288458190742280_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74" }
-];
-const activeStep = steps[0];
----
+import Checker from './Checker.astro';
 
-<section class="py-24 lg:py-40 bg-base-warm relative overflow-hidden">
-  <div class="max-w-7xl mx-auto px-6 lg:px-12">
-    <div class="mb-16">
-      <div class="font-label text-xs font-bold tracking-[0.2em] text-pop1 mb-6">THE CRAFT</div>
-      <h2 class="text-5xl lg:text-[5rem] leading-[0.9] text-anchor font-display uppercase mb-8">
-        SIMPLE INGREDIENTS.<br/>
-        <span class="text-butter-strong">CAREFUL HANDS.</span>
-      </h2>
+const steps = [
+  {
+    num: '01',
+    label: 'Select',
+    title: 'Ingredients Worth Choosing',
+    body: 'Every drink starts with quality picks — real matcha, real dates, real milk — chosen for balance, not shortcuts.',
+    img: "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-15/771400992_17944423569266823_2717374682919881534_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=mGV5upwkDeMQ7kNvwF6Z8JR&_nc_oc=Adrue47ac2EoerrMa4dViGBYFH6xhRtu_eK01AN-hJKN5S8zNqBTz6DvSfgpGiGXN04&_nc_zt=23&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=cO0pZhQ1iJyLHDhTQ7H9Fw&_nc_ss=7ba8c&oh=00_AQO8K_2DEm96Kz0p6BqwRuAoNFhRYihjBVVT01MRcgZTag&oe=6AC1EE72"
+  },
+  {
+    num: '02',
+    label: 'Balance',
+    title: 'Measured, Not Guessed',
+    body: 'We weigh the sugar out and let real flavor do the work — so every cup stays light without going flat.',
+    img: "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-15/769528731_17944263906266823_5881257777323666093_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=vVSHWsKezj0Q7kNvwE_1F6T&_nc_oc=Adok7oQj-l3Gd_lR_qiVyXSWxPASNVHNYPpo-GjqNhQIcMl9Q99fI4i49V1ljliV6AQ&_nc_zt=23&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=cO0pZhQ1iJyLHDhTQ7H9Fw&_nc_ss=7ba8c&oh=00_AQOeJDlml8W9lO8tUrbaursvvnHcMa0Y2SevcE1T8VRSEA&oe=6AC20722"
+  },
+  {
+    num: '03',
+    label: 'Brew',
+    title: 'Slow, Careful, Cold',
+    body: 'Our cold brew takes its time — a longer, gentler extraction for a flavor that never needs to rush.',
+    img: "https://scontent-ams2-1.cdninstagram.com/v/t15.5256-10/780949353_1596279635189869_1153598757660377946_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=siUSfyJphccQ7kNvwGXGNh3&_nc_oc=Adp5ClswIvrBuk9UMFF2r4wynoSF4eYDZSTdD_YMF--XlB9UJktW_sGhTUrsOYx9e-4&_nc_zt=23&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=cO0pZhQ1iJyLHDhTQ7H9Fw&_nc_ss=7ba8c&oh=00_AQMAFgIL7451-Jw8cT4NeJMKx_lYUvv1mzkKJx0-ZQRwJQ&oe=6AC1E8E3"
+  },
+  {
+    num: '04',
+    label: 'Serve',
+    title: 'Made With Care',
+    body: 'Poured, finished and handed over with the same warmth every time — a little cup, a lot of intention.',
+    img: "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-15/765175304_17943473940266823_6613519965218726446_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=zSryh1NaIckQ7kNvwG3zLik&_nc_oc=AdrpU3kvQbihxR-w3b4-hCgu7PSCvhRJTZgkZeOedF8g24BxUt28SAiTvYe38Ker59M&_nc_zt=23&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=cO0pZhQ1iJyLHDhTQ7H9Fw&_nc_ss=7ba8c&oh=00_AQPucM398AbbJ78lpFmU8ao3dJSwi002mEO_9IbhV1y5QQ&oe=6AC1EAF1"
+  }
+];
+---
+<section class="relative bg-creamDark py-24 md:py-32 overflow-hidden">
+  <div class="max-w-[1300px] mx-auto px-5 md:px-8">
+    <div class="flex flex-col md:flex-row md:justify-between md:items-end gap-6 mb-14 reveal">
+      <div>
+        <p class="font-mono uppercase text-xs tracking-[0.2em] text-anchorSoft mb-4">The Craft</p>
+        <h2 class="font-display uppercase text-anchor text-4xl md:text-6xl leading-[0.92] tracking-tight">
+          Simple Ingredients.<br/>Careful Hands.
+        </h2>
+      </div>
+      <div class="flex items-start gap-4 max-w-xs">
+        <p class="text-anchorSoft text-sm">No shortcuts, no artificial promises — just a process built to keep every drink honest.</p>
+        <Checker colorA="bg-butter" colorB="bg-lavender" cols={3} rows={3} size="w-3 h-3" />
+      </div>
     </div>
 
-    <div class="bg-anchor rounded-card p-8 lg:p-12 text-base relative">
-      <!-- Top Feature Active Step -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
-        <div class="reveal-up">
-          <div class="flex items-center gap-4 mb-8">
-            <div class="w-12 h-12 bg-pop2 text-anchor font-display text-2xl flex items-center justify-center rounded-xl border-2 border-base">{activeStep.num}</div>
-            <div class="font-label text-xs font-bold tracking-widest text-butter">{activeStep.label}</div>
-          </div>
-          <h3 class="text-4xl lg:text-5xl font-display uppercase leading-none mb-6">{activeStep.title}</h3>
-          <p class="font-body text-base/80 text-lg">{activeStep.desc}</p>
+    <div class="bg-anchor rounded-[32px] border-2 border-anchor p-6 md:p-10 text-cream reveal">
+      <div id="craft-feature" class="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-lavender text-anchor font-mono font-bold text-sm mb-4" id="craft-num">01</span>
+          <p class="font-mono uppercase text-xs tracking-[0.2em] text-cream/60 mb-2" id="craft-label">Select</p>
+          <h3 class="font-display uppercase text-3xl md:text-4xl text-butter leading-tight mb-4" id="craft-title">Ingredients Worth Choosing</h3>
+          <p class="text-cream/80 text-sm md:text-base max-w-md" id="craft-body">Every drink starts with quality picks — real matcha, real dates, real milk — chosen for balance, not shortcuts.</p>
         </div>
-        
-        <div class="relative reveal-up" style="transition-delay: 200ms;">
-          <!-- Hard pink offset shadow -->
-          <div class="rounded-2xl overflow-hidden aspect-square border-4 border-base relative z-10 bg-anchor shadow-hard-pink">
-            <img src={activeStep.img} alt={activeStep.title} class="w-full h-full object-cover" loading="lazy" />
-          </div>
+        <div class="relative">
+          <div class="absolute inset-0 bg-pink rounded-3xl translate-x-3.5 translate-y-3.5"></div>
+          <img id="craft-img" src={steps[0].img} alt={steps[0].title} loading="lazy" width="480" height="340" class="relative rounded-3xl border-2 border-anchor w-full h-64 md:h-72 object-cover transition-opacity duration-400" />
         </div>
       </div>
 
-      <!-- Tabs -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border-t-2 border-base/20">
-        {steps.map((step, idx) => (
-          <button class={`text-left py-8 px-6 group hover:bg-base/5 transition-colors ${idx !== steps.length - 1 ? 'md:border-r-2 border-b-2 md:border-b-0 border-base/20' : ''} ${step.num === activeStep.num ? 'bg-base/10' : ''}`}>
-            <div class="font-label text-xs font-bold tracking-widest text-butter/60 mb-2 group-hover:text-butter transition-colors">{step.num} / {step.label}</div>
-            <div class="font-display text-2xl uppercase leading-none group-hover:text-pop1 transition-colors">{step.title}</div>
+      <div class="mt-10 pt-8 border-t border-cream/20 flex flex-wrap gap-x-8 gap-y-4">
+        {steps.map((s, i) => (
+          <button
+            class="craft-tab font-mono uppercase text-xs md:text-sm tracking-wider text-cream/50 hover:text-butter transition-colors data-active:text-butter"
+            data-index={i}
+            data-num={s.num}
+            data-label={s.label}
+            data-title={s.title}
+            data-body={s.body}
+            data-img={s.img}
+          >
+            {s.title} <span class="opacity-60">{s.num}</span>
           </button>
         ))}
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  const tabs = Array.from(document.querySelectorAll('.craft-tab'));
+  const num = document.getElementById('craft-num');
+  const label = document.getElementById('craft-label');
+  const title = document.getElementById('craft-title');
+  const body = document.getElementById('craft-body');
+  const img = document.getElementById('craft-img');
+
+  function setActive(tab) {
+    tabs.forEach((t) => t.classList.remove('text-butter'));
+    tab.classList.add('text-butter');
+    if (img) img.style.opacity = '0';
+    setTimeout(() => {
+      if (num) num.textContent = tab.getAttribute('data-num') || '';
+      if (label) label.textContent = tab.getAttribute('data-label') || '';
+      if (title) title.textContent = tab.getAttribute('data-title') || '';
+      if (body) body.textContent = tab.getAttribute('data-body') || '';
+      if (img) {
+        img.setAttribute('src', tab.getAttribute('data-img') || '');
+        img.setAttribute('alt', tab.getAttribute('data-title') || '');
+        img.style.opacity = '1';
+      }
+    }, 200);
+  }
+  tabs.forEach((tab) => tab.addEventListener('click', () => setActive(tab)));
+  if (tabs[0]) setActive(tabs[0]);
+</script>
