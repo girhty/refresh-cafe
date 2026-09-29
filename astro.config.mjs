@@ -5,5 +5,5 @@ export default defineConfig({
   base: '/refresh-cafe/',
   site: 'https://refresh-cafe.example',
   output: 'static',
-  integrations: [tailwind({ applyBaseStyles: false })]
+  integrations: [tailwind({ applyBaseStyles: true })]
 });
