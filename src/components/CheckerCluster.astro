@@ -1,0 +1,27 @@
+---
+interface Props {
+  className?: string;
+  theme?: 'butter-lav' | 'dark-cream';
+  rows?: number;
+  cols?: number;
+}
+const { className = '', theme = 'butter-lav', rows = 3, cols = 4 } = Astro.props;
+---
+
+<div class={`inline-grid gap-1 p-1 rounded-lg ${className}`} style={`grid-template-columns: repeat(${cols}, minmax(0, 1fr));`}>
+  {Array.from({ length: rows * cols }).map((_, i) => {
+    const isEven = (Math.floor(i / cols) + (i % cols)) % 2 === 0;
+    const isSpecial = i % 5 === 0;
+    let bg = '';
+    if (theme === 'butter-lav') {
+      bg = isEven ? 'bg-butter' : 'bg-popLav';
+    } else {
+      bg = isEven ? 'bg-anchor' : 'bg-cream';
+    }
+    return (
+      <div 
+        class={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-[3px] transition-transform duration-300 hover:scale-125 ${bg} ${isSpecial ? 'opacity-80' : 'opacity-100'}`}
+      />
+    );
+  })}
+</div>

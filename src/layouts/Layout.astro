@@ -1,15 +1,18 @@
 ---
-import '../styles/global.css';
-
 interface Props {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
 }
 
-const { title, description } = Astro.props;
+const {
+  title = "Refresh Cafe | First Diet & Healthy Specialty Cafe in Baghdad",
+  description = "The first diet cafe in Baghdad offering the true balance of guilt-free indulgence, specialty cold brew, protein shakes & iced matcha. Located in Al-Mansour."
+} = Astro.props;
+
+const logoUrl = "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-19/616235104_17913448284266823_7616257522537543457_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=109&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=Y6m5MGA-af4Q7kNvwEaaf8s&_nc_oc=AdoJYDmk00uO0U8jOWQmT_xgORL8ewmPPkv55QnIWQUEQJS4gD-HdvWGoQIvNKABwLU&_nc_zt=24&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=9zWxO4kA-G6T5PIw7a6lHQ&_nc_ss=7ba8c&oh=00_AQP8MVo4Z9DVcT9j5c_h2SQAtIev1cWF09Wlb0hFaPI2Cg&oe=6AC1F8FA";
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
@@ -19,87 +22,85 @@ const { title, description } = Astro.props;
     <title>{title}</title>
     <meta name="description" content={description} />
     
-    <!-- Open Graph / Social -->
-    <meta property="og:type" content="website" />
+    <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="https://scontent-ams2-1.cdninstagram.com/v/t51.82787-19/616235104_17913448284266823_7616257522537543457_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=109&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=Y6m5MGA-af4Q7kNvwEaaf8s&_nc_oc=AdoJYDmk00uO0U8jOWQmT_xgORL8ewmPPkv55QnIWQUEQJS4gD-HdvWGoQIvNKABwLU&_nc_zt=24&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=9zWxO4kA-G6T5PIw7a6lHQ&_nc_ss=7ba8c&oh=00_AQP8MVo4Z9DVcT9j5c_h2SQAtIev1cWF09Wlb0hFaPI2Cg&oe=6AC1F8FA" />
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+    <meta property="og:image" content={logoUrl} />
+    <meta property="og:type" content="website" />
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800;900&family=JetBrains+Mono:wght@500;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
     <!-- Local Business Schema -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "CafeOrCoffeeShop",
         "name": "Refresh Cafe",
+        "image": "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-19/616235104_17913448284266823_7616257522537543457_n.jpg",
+        "telephone": "+9647739999038",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "شارع هيل وزعفران مجاور دايت ستي",
+          "streetAddress": "Al-Mansour, Al-Dawoodi, Hayl & Zaafaran St, Next to Diet City",
           "addressLocality": "Baghdad",
-          "addressRegion": "Baghdad Governorate",
           "postalCode": "10011",
           "addressCountry": "IQ"
         },
-        "telephone": "+964 773 999 9038",
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": "5",
+          "ratingValue": "5.0",
           "reviewCount": "5"
-        }
+        },
+        "servesCuisine": ["Diet Drinks", "Specialty Coffee", "Iced Matcha", "Healthy Shakes"]
       }
     </script>
   </head>
-  <body class="bg-base font-body text-anchor antialiased overflow-x-hidden selection:bg-pop1 selection:text-white">
+  <body class="bg-cream text-anchor font-sans antialiased overflow-x-hidden selection:bg-butter selection:text-anchor">
     <slot />
   </body>
 </html>
 
-<script>
-  // Reveal animations on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.reveal-up').forEach((el) => {
-    observer.observe(el);
-  });
-</script>
-
-<style>
-  .reveal-up {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.7s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+<style is:global>
+  h1, h2, h3, .font-display {
+    font-family: 'Cabinet Grotesk', Impact, sans-serif;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+    text-transform: uppercase;
   }
-  .reveal-up.is-visible {
-    opacity: 1;
-    transform: translateY(0);
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
   }
   
-  /* Checkerboard utility patterns */
-  .bg-checker-yellow-lavender {
-    background-image: linear-gradient(45deg, #A78BFA 25%, transparent 25%), linear-gradient(-45deg, #A78BFA 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #A78BFA 75%), linear-gradient(-45deg, transparent 75%, #A78BFA 75%);
-    background-size: 20px 20px;
-    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
-    background-color: #FCD34D;
+  /* Hard tactile buttons & cards */
+  .pixel-checker-sm {
+    background-image: 
+      linear-gradient(45deg, #FFE999 25%, transparent 25%), 
+      linear-gradient(-45deg, #FFE999 25%, transparent 25%), 
+      linear-gradient(45deg, transparent 75%, #FFE999 75%), 
+      linear-gradient(-45deg, transparent 75%, #FFE999 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+    background-color: #C5CAFE;
   }
-  .bg-checker-dark-cream {
-    background-image: linear-gradient(45deg, #2E1A11 25%, transparent 25%), linear-gradient(-45deg, #2E1A11 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #2E1A11 75%), linear-gradient(-45deg, transparent 75%, #2E1A11 75%);
-    background-size: 40px 40px;
-    background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
-    background-color: #FDF8F0;
+
+  .pixel-checker-dark {
+    background-image: 
+      linear-gradient(45deg, #27170E 25%, transparent 25%), 
+      linear-gradient(-45deg, #27170E 25%, transparent 25%), 
+      linear-gradient(45deg, transparent 75%, #27170E 75%), 
+      linear-gradient(-45deg, transparent 75%, #27170E 75%);
+    background-size: 24px 24px;
+    background-position: 0 0, 0 12px, 12px -12px, -12px 0px;
+    background-color: #FFFDF9;
   }
-  .bg-checker-faded {
-    background-image: linear-gradient(45deg, rgba(46,26,17,0.05) 25%, transparent 25%), linear-gradient(-45deg, rgba(46,26,17,0.05) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(46,26,17,0.05) 75%), linear-gradient(-45deg, transparent 75%, rgba(46,26,17,0.05) 75%);
-    background-size: 40px 40px;
-    background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee-left,
+    .animate-marquee-right,
+    .animate-float-slow {
+      animation: none !important;
+    }
   }
 </style>

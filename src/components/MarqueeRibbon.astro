@@ -1,0 +1,35 @@
+---
+interface Props {
+  words: string[];
+  bgColor?: string;
+  textColor?: string;
+  tiltClass?: string;
+  direction?: 'left' | 'right';
+}
+
+const {
+  words,
+  bgColor = "bg-popPink",
+  textColor = "text-anchor",
+  tiltClass = "-rotate-2",
+  direction = "left"
+} = Astro.props;
+
+const animClass = direction === 'left' ? 'animate-marquee-left' : 'animate-marquee-right';
+---
+
+<div class={`relative w-[110vw] -left-[5vw] overflow-hidden py-3 sm:py-4.5 border-y-2 border-anchor ${bgColor} ${textColor} ${tiltClass} z-20 shadow-md select-none`}>
+  <div class={`flex w-[200%] whitespace-nowrap ${animClass} hover:[animation-play-state:paused]`}>
+    <!-- Repeated segments for seamless loop -->
+    {Array.from({ length: 4 }).map(() => (
+      <div class="flex items-center gap-6 sm:gap-10 shrink-0 px-4">
+        {words.map((word) => (
+          <span class="flex items-center gap-6 sm:gap-10 font-display text-2xl sm:text-4xl uppercase tracking-wider">
+            <span>{word}</span>
+            <span class="inline-block w-3.5 h-3.5 sm:w-5 sm:h-5 rounded-full bg-anchor transform rotate-45"></span>
+          </span>
+        ))}
+      </div>
+    ))}
+  </div>
+</div>

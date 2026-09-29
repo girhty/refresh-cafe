@@ -1,29 +1,767 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
-import Hero from '../components/Hero.astro';
-import About from '../components/About.astro';
-import SignatureProducts from '../components/SignatureProducts.astro';
-import Experience from '../components/Experience.astro';
-import Craft from '../components/Craft.astro';
-import Reviews from '../components/Reviews.astro';
-import VisitFooter from '../components/VisitFooter.astro';
+import MarqueeRibbon from '../components/MarqueeRibbon.astro';
+import CheckerCluster from '../components/CheckerCluster.astro';
 
-const title = "Refresh Cafe | Baghdad's First Diet Cafe";
-const description = "Experience the perfect balance between pleasure and health. Refresh Cafe is Baghdad’s first diet cafe, serving guilt-free signature drinks like Iced Matcha, Diet Latte, and Dates Milkshake.";
+// Real Data from Instagram & Google Places
+const googleData = {
+  name: "Refresh Cafe",
+  rating: 5.0,
+  user_ratings_total: 5,
+  formatted_address: "Al-Mansour, Al-Dawoodi, Hayl & Zaafaran St, Next to Diet City, Baghdad",
+  formatted_phone_number: "+964 773 999 9038",
+  open_now: true,
+};
+
+const instaData = {
+  username: "refresh.baghdad",
+  followers: "3.5K+",
+  bio: "أول كافيه دايت في بغداد يقدّم توازن حقيقي بين اللذة والصحة 🤎",
+};
+
+// Curated supplied real imagery
+const heroDrinkImg = "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-15/794032623_17948492067266823_7578226426693012433_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=NYjctEAvy7cQ7kNvwFHmiSP&_nc_oc=Adph5_RVWf2icuScJwmhAxHO8P_RB8oZUWFhxo62FNyTEbrzne6WhCP-EQgxmMBZNo4&_nc_zt=23&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=cO0pZhQ1iJyLHDhTQ7H9Fw&_nc_ss=7ba8c&oh=00_AQNZ0AR79KsE0exUGsrTSfuBfJpq0kzO5sgxGTwTZIa6AA&oe=6AC1E3F9";
+const latteImg = "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-15/776718665_17946476757266823_3092288458190742280_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=Z3Cwie8nHwkQ7kNvwEwnhC4&_nc_oc=AdrQtodvlccHUvaeHo7b2bHkP3djMDX5TGMqNPIEaS9OoQkSxtvSUUBXLkte7oWjd2U&_nc_zt=23&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=cO0pZhQ1iJyLHDhTQ7H9Fw&_nc_ss=7ba8c&oh=00_AQPZHPFo9YZI5fw4pcYvmq97sLXDnxDJuow6lCPZGeA_5w&oe=6AC1E3AE";
+const dateShakeImg = "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-15/779145745_17946355131266823_6141674129459981372_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=ZCuU1PJApxgQ7kNvwER0Rna&_nc_oc=AdrMjokD5-9uOyDrezyV0GHSK0I8cT2KHL-hJPKOoiu3Raqa6aSXuijd5D9o71n3MsM&_nc_zt=23&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=cO0pZhQ1iJyLHDhTQ7H9Fw&_nc_ss=7ba8c&oh=00_AQOEJxRfbfvpkJTM8TPNKFYqjff2Qld_qrU6S8fEcTIBzw&oe=6AC1F0DE";
+const coldBrewImg = "https://scontent-ams2-1.cdninstagram.com/v/t15.5256-10/780949353_1596279635189869_1153598757660377946_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=siUSfyJphccQ7kNvwGXGNh3&_nc_oc=Adp5ClswIvrBuk9UMFF2r4wynoSF4eYDZSTdD_YMF--XlB9UJktW_sGhTUrsOYx9e-4&_nc_zt=23&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=cO0pZhQ1iJyLHDhTQ7H9Fw&_nc_ss=7ba8c&oh=00_AQMAFgIL7451-Jw8cT4NeJMKx_lYUvv1mzkKJx0-ZQRwJQ&oe=6AC1E8E3";
+const warmVibeImg = "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-15/769528731_17944263906266823_5881257777323666093_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=vVSHWsKezj0Q7kNvwE_1F6T&_nc_oc=Adok7oQj-l3Gd_lR_qiVyXSWxPASNVHNYPpo-GjqNhQIcMl9Q99fI4i49V1ljliV6AQ&_nc_zt=23&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=cO0pZhQ1iJyLHDhTQ7H9Fw&_nc_ss=7ba8c&oh=00_AQOeJDlml8W9lO8tUrbaursvvnHcMa0Y2SevcE1T8VRSEA&oe=6AC20722";
+const dessertImg = "https://scontent-ams2-1.cdninstagram.com/v/t39.30808-6/767002513_122200920686767471_8275407980521003658_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=t5w9PZbMXw8Q7kNvwFkqShs&_nc_oc=AdokUgTqNqOfWBbstQA1iw_zORgRBJ36AUuRVjlHhmzTwJZXbpoDadb2MvSpxfJoQ5w&_nc_zt=23&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=cO0pZhQ1iJyLHDhTQ7H9Fw&_nc_ss=7ba8c&oh=00_AQNJbZGpSvaU6U3I2Rul9p9sSj8VgYuQb4OqJTW6diWT6A&oe=6AC20D4F";
+const summerImg = "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-15/768926201_17943806736266823_197649942369072822_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=ojwx0PIcx6cQ7kNvwHakwM5&_nc_oc=AdrohkdxSnOG6lhDI_JLSki2F1vfuGJyFUd_91C5MdYPxCNTuNWuZSYHqFbVIOesk9o&_nc_zt=23&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=cO0pZhQ1iJyLHDhTQ7H9Fw&_nc_ss=7ba8c&oh=00_AQMVVpIOnQJ0DE6BAofxM9ijXZvU7PjybVQS_hIDR7eWvQ&oe=6AC1F8E0";
+const sereneImg = "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-15/765175304_17943473940266823_6613519965218726446_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=zSryh1NaIckQ7kNvwG3zLik&_nc_oc=AdrpU3kvQbihxR-w3b4-hCgu7PSCvhRJTZgkZeOedF8g24BxUt28SAiTvYe38Ker59M&_nc_zt=23&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=cO0pZhQ1iJyLHDhTQ7H9Fw&_nc_ss=7ba8c&oh=00_AQPucM398AbbJ78lpFmU8ao3dJSwi002mEO_9IbhV1y5QQ&oe=6AC1EAF1";
 ---
 
-<Layout title={title} description={description}>
+<Layout>
   <Navbar />
-  
-  <main>
-    <Hero />
-    <About />
-    <SignatureProducts />
-    <Experience />
-    <Craft />
-    <Reviews />
-  </main>
-  
-  <VisitFooter />
+
+  <!-- 1. HERO SECTION (Butter Background) -->
+  <section class="relative bg-butter pt-28 sm:pt-36 pb-20 sm:pb-28 overflow-hidden border-b-2 border-anchor">
+    <!-- Top-Right Checkerboard cluster -->
+    <div class="absolute top-6 right-6 sm:top-12 sm:right-12 hidden sm:block">
+      <CheckerCluster theme="butter-lav" rows={4} cols={5} />
+    </div>
+
+    <!-- Organic Blob Highlight in Background -->
+    <div class="absolute top-1/2 right-1/4 -translate-y-1/2 w-[340px] sm:w-[500px] h-[340px] sm:h-[500px] bg-cream/60 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center">
+        
+        <!-- Left: Huge Typography & CTA -->
+        <div class="lg:col-span-7 flex flex-col items-start">
+          <!-- Mono Eyebrow Tag -->
+          <div class="inline-flex items-center gap-2 bg-anchor text-butter font-mono text-[11px] sm:text-xs font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full mb-6 shadow-[2px_2px_0px_#FFAAC9]">
+            <span class="w-2 h-2 rounded-full bg-popPink"></span>
+            BAGHDAD'S #1 DIET CAFE
+          </div>
+
+          <!-- Dramatic Display Headline -->
+          <h1 class="text-anchor text-5xl sm:text-7xl lg:text-[5.5rem] tracking-tight mb-6 font-display">
+            PURE FLAVOR. <br/>
+            <span class="text-anchor underline decoration-popPink decoration-wavy decoration-4">ZERO GUILT.</span>
+          </h1>
+
+          <!-- Body Description -->
+          <p class="text-anchor/85 text-base sm:text-lg max-w-xl font-medium leading-relaxed mb-8">
+            أول كافيه دايت في بغداد يقدّم توازن حقيقي بين اللذة والصحة. Specialty coffee, sugar-free cold brews, ceremonial matcha, and calculated macros crafted for your daily energy.
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-wrap items-center gap-4 w-full sm:w-auto">
+            <a 
+              href="#menu" 
+              class="w-full sm:w-auto bg-anchor hover:bg-anchor-light text-butter font-mono text-xs sm:text-sm font-extrabold uppercase px-7 py-4 rounded-full border-2 border-anchor shadow-offset-pink hover:translate-y-[-2px] active:translate-y-[2px] transition-all flex items-center justify-between sm:justify-center gap-4 group"
+            >
+              <span>EXPLORE DIET MENU</span>
+              <span class="w-7 h-7 rounded-full bg-butter text-anchor flex items-center justify-center font-bold group-hover:rotate-45 transition-transform">
+                →
+              </span>
+            </a>
+
+            <a 
+              href="https://maps.google.com/?q=Refresh+Cafe+Al-Mansour+Baghdad" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="w-full sm:w-auto text-anchor hover:text-popPink font-mono text-xs sm:text-sm font-bold uppercase px-4 py-3 flex items-center justify-center gap-2 transition-colors underline decoration-2 underline-offset-4"
+            >
+              <span>FIND OUR LOCATION</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <!-- Google Place & Social Proof Badge -->
+          <div class="mt-10 sm:mt-12 flex flex-wrap items-center gap-6 pt-6 border-t border-anchor/20 w-full">
+            <div class="flex items-center gap-3 bg-cream px-4 py-2 rounded-full border-2 border-anchor shadow-[3px_3px_0px_#27170E]">
+              <div class="flex text-starGold text-sm">★★★★★</div>
+              <span class="font-mono text-xs font-bold text-anchor">{googleData.rating}.0 ({googleData.user_ratings_total} Reviews)</span>
+            </div>
+            
+            <div class="flex items-center gap-2 text-xs font-mono font-bold text-anchor/80">
+              <span class="w-2.5 h-2.5 rounded-full bg-popPink inline-block"></span>
+              <span>{instaData.followers} Instagram Community</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Signature Hero Product & Floating Accents -->
+        <div class="lg:col-span-5 relative flex justify-center">
+          <!-- Main Cutout-Styled Photo Frame with Hard Pink Shadow -->
+          <div class="relative w-full max-w-[360px] sm:max-w-[420px]">
+            <div class="relative bg-cream p-3 sm:p-4 rounded-[32px] border-3 border-anchor shadow-offset-pink-lg rotate-1 hover:rotate-0 transition-transform duration-500">
+              <div class="aspect-square rounded-[24px] overflow-hidden border-2 border-anchor bg-popLav relative">
+                <img 
+                  src={heroDrinkImg} 
+                  alt="Signature Iced Matcha - Refresh Cafe" 
+                  class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                  loading="eager"
+                />
+                <!-- Price / Calorie Chip -->
+                <div class="absolute top-3 left-3 bg-butter border-2 border-anchor px-3 py-1 rounded-full font-mono text-[11px] font-extrabold uppercase shadow-[2px_2px_0px_#27170E]">
+                  CEREMONIAL GRADE MATCHA 🍵
+                </div>
+              </div>
+
+              <div class="pt-3 pb-1 px-2 flex items-center justify-between">
+                <div>
+                  <p class="font-display text-xl text-anchor">ICED MATCHA REFRESH</p>
+                  <p class="font-mono text-[10px] text-anchor/70 font-bold uppercase tracking-wider">Smooth • Creamy • Low Cal</p>
+                </div>
+                <div class="w-8 h-8 rounded-full bg-popPink border border-anchor flex items-center justify-center font-bold text-xs">
+                  ✨
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating Prop 1 (Cold Brew Mini Badge) -->
+            <div class="absolute -bottom-6 -left-6 bg-popLav border-2 border-anchor p-2.5 sm:p-3 rounded-2xl shadow-offset-dark -rotate-6 animate-float-slow hidden sm:flex items-center gap-2.5">
+              <div class="w-10 h-10 rounded-xl overflow-hidden border border-anchor bg-cream">
+                <img src={coldBrewImg} alt="Cold Brew" class="w-full h-full object-cover" />
+              </div>
+              <div class="font-mono text-[10px] leading-tight">
+                <span class="block font-black text-anchor">COLD BREW 🧊</span>
+                <span class="text-anchor/70 font-bold">Slow Extracted</span>
+              </div>
+            </div>
+
+            <!-- Floating Prop 2 (Sticker) -->
+            <div class="absolute -top-5 -right-4 bg-butter border-2 border-anchor py-1.5 px-3 rounded-full font-mono text-[10px] font-extrabold shadow-[2px_2px_0px_#27170E] rotate-12">
+              100% HEALTHY VIBES
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. MARQUEE RIBBON 1 (Bubblegum Pink) -->
+  <MarqueeRibbon 
+    words={["ICED MATCHA", "COLD BREW", "DIET LATTE", "DATE SHAKE", "SUGAR FREE", "HIGH PROTEIN", "BAGHDAD AL-MANSOUR"]} 
+    bgColor="bg-popPink"
+    tiltClass="-rotate-1"
+    direction="left"
+  />
+
+  <!-- 3. ABOUT SECTION (Base Light + Tilted Floating Frames) -->
+  <section id="about" class="py-24 sm:py-36 bg-cream relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 relative">
+      
+      <!-- Eyebrow & Headline -->
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="font-mono text-xs uppercase font-extrabold tracking-widest text-popPink bg-anchor px-3 py-1 rounded-full mb-4 inline-block">
+          ABOUT REFRESH CAFE
+        </span>
+        <h2 class="text-4xl sm:text-6xl text-anchor font-display tracking-tight mb-6 mt-3">
+          HEALTHY CHOICES. <br class="hidden sm:inline"/>
+          UNCOMPROMISED TASTE.
+        </h2>
+        <p class="font-display text-xl sm:text-2xl text-anchor/90 uppercase tracking-tight leading-snug">
+          "أول كافيه دايت في بغداد يقدّم توازن حقيقي بين اللذة والصحة 🤎. WE CRAFT EVERY SIP WITH CALCULATED CALORIES AND PURE PASSION."
+        </p>
+      </div>
+
+      <!-- Center Visual & Tilted Polaroid Frames -->
+      <div class="relative grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-center my-12">
+        
+        <!-- Left Tilted Photo Frame -->
+        <div class="transform md:-rotate-6 hover:rotate-0 transition-all duration-300">
+          <div class="bg-cream-tint p-4 rounded-3xl border-3 border-anchor shadow-offset-dark">
+            <div class="aspect-[4/3] rounded-2xl overflow-hidden border-2 border-anchor bg-butter">
+              <img src={latteImg} alt="Diet Latte by Refresh" class="w-full h-full object-cover" />
+            </div>
+            <p class="font-mono text-xs font-bold text-center mt-3 uppercase text-anchor">
+              ☕ DIET LATTE • NO EXTRA CALORIES
+            </p>
+          </div>
+        </div>
+
+        <!-- Center Feature Box -->
+        <div class="bg-butter rounded-3xl p-6 sm:p-8 border-3 border-anchor shadow-offset-pink text-center flex flex-col justify-center items-center">
+          <div class="w-14 h-14 rounded-2xl bg-anchor text-butter flex items-center justify-center font-display text-3xl mb-4 border-2 border-anchor">
+            0%
+          </div>
+          <h3 class="font-display text-2xl text-anchor mb-2">REFINED SUGAR</h3>
+          <p class="text-xs sm:text-sm font-sans font-medium text-anchor/80 mb-6">
+            We curate alternatives that fuel your lifestyle without sacrificing rich indulgence.
+          </p>
+          <a href="#menu" class="bg-anchor text-cream font-mono text-[11px] font-bold uppercase px-5 py-2.5 rounded-full border border-anchor hover:bg-anchor-light transition-colors">
+            VIEW DRINK SELECTION
+          </a>
+        </div>
+
+        <!-- Right Tilted Photo Frame -->
+        <div class="transform md:rotate-6 hover:rotate-0 transition-all duration-300">
+          <div class="bg-cream-tint p-4 rounded-3xl border-3 border-anchor shadow-offset-lav">
+            <div class="aspect-[4/3] rounded-2xl overflow-hidden border-2 border-anchor bg-popLav">
+              <img src={warmVibeImg} alt="Cozy Refresh Moment" class="w-full h-full object-cover" />
+            </div>
+            <p class="font-mono text-xs font-bold text-center mt-3 uppercase text-anchor">
+              ✨ كُوب دافي ومزاج رايق
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Feature Pill Badges -->
+      <div class="flex flex-wrap justify-center items-center gap-3 sm:gap-4 mt-8">
+        <span class="bg-cream border-2 border-anchor px-4 py-2 rounded-full font-mono text-xs font-bold uppercase shadow-[2px_2px_0px_#27170E]">
+          📍 Al-Mansour, Baghdad
+        </span>
+        <span class="bg-popLav border-2 border-anchor px-4 py-2 rounded-full font-mono text-xs font-bold uppercase shadow-[2px_2px_0px_#27170E]">
+          🌱 100% Calculated Macros
+        </span>
+        <span class="bg-butter border-2 border-anchor px-4 py-2 rounded-full font-mono text-xs font-bold uppercase shadow-[2px_2px_0px_#27170E]">
+          🧊 Specialty Cold Extraction
+        </span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4. SIGNATURE PRODUCTS (Anchor Dark Dramatic Band) -->
+  <section id="menu" class="bg-anchor text-cream py-24 sm:py-32 relative overflow-hidden">
+    <!-- Checker Cluster top right -->
+    <div class="absolute top-8 right-8 hidden md:block">
+      <CheckerCluster theme="butter-lav" rows={3} cols={4} />
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div>
+          <span class="font-mono text-xs font-extrabold uppercase tracking-widest text-anchor bg-butter px-3 py-1 rounded-full inline-block mb-3">
+            SIGNATURE DRINKS & BITES
+          </span>
+          <h2 class="text-4xl sm:text-6xl text-butter font-display tracking-tight">
+            A LITTLE DIFFERENT. <br/>
+            DELICIOUSLY SO.
+          </h2>
+        </div>
+        <p class="text-cream/80 max-w-md font-sans text-sm sm:text-base leading-relaxed">
+          Explore our most-loved creations crafted to give you the exact taste you crave with zero refined sugars and clean ingredients.
+        </p>
+      </div>
+
+      <!-- Carousel Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 items-stretch">
+        
+        <!-- Product 1: Iced Matcha (Featured Card) -->
+        <div class="bg-butter text-anchor rounded-3xl p-5 border-3 border-anchor shadow-offset-pink flex flex-col justify-between transform lg:-translate-y-4 hover:translate-y-[-8px] transition-transform duration-300">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="bg-popPink text-anchor border border-anchor px-2.5 py-1 rounded-full font-mono text-[10px] font-black uppercase">
+                BESTSELLER 🍵
+              </span>
+              <span class="font-mono text-xs font-bold">CALCULATED KCAL</span>
+            </div>
+            
+            <div class="aspect-square rounded-2xl overflow-hidden border-2 border-anchor mb-4 bg-cream shadow-sm">
+              <img src={heroDrinkImg} alt="Iced Matcha" class="w-full h-full object-cover" />
+            </div>
+
+            <h3 class="font-display text-2xl text-anchor mb-1">ICED MATCHA</h3>
+            <p class="font-mono text-[11px] text-anchor/80 font-semibold uppercase mb-4">Ceremonial Matcha • Oat Milk • Sugar Free</p>
+          </div>
+
+          <div class="pt-4 border-t border-anchor/20">
+            <div class="flex items-center justify-between font-mono text-xs font-bold mb-3">
+              <span>INTENSITY</span>
+              <span class="text-[10px] bg-anchor text-butter px-2 py-0.5 rounded">SMOOTH & BOLD</span>
+            </div>
+            <a href="tel:+9647739999038" class="w-full bg-anchor hover:bg-anchor-light text-butter font-mono text-xs font-extrabold uppercase py-3 rounded-xl border border-anchor flex items-center justify-center gap-2 transition-colors">
+              <span>ORDER IN STORE</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Product 2: Diet Latte -->
+        <div class="bg-cream text-anchor rounded-3xl p-5 border-3 border-anchor shadow-offset-lav flex flex-col justify-between hover:translate-y-[-4px] transition-transform duration-300">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="bg-popLav text-anchor border border-anchor px-2.5 py-1 rounded-full font-mono text-[10px] font-black uppercase">
+                COFFEE SPECIAL ☕
+              </span>
+              <span class="font-mono text-xs font-bold">HOT / ICED</span>
+            </div>
+            
+            <div class="aspect-square rounded-2xl overflow-hidden border-2 border-anchor mb-4 bg-butter shadow-sm">
+              <img src={latteImg} alt="Diet Latte" class="w-full h-full object-cover" />
+            </div>
+
+            <h3 class="font-display text-2xl text-anchor mb-1">DIET LATTE</h3>
+            <p class="font-mono text-[11px] text-anchor/80 font-semibold uppercase mb-4">Double Espresso • Steamed Skim/Almond Milk</p>
+          </div>
+
+          <div class="pt-4 border-t border-anchor/10">
+            <a href="tel:+9647739999038" class="w-full bg-butter hover:bg-butter-gold text-anchor font-mono text-xs font-extrabold uppercase py-3 rounded-xl border border-anchor flex items-center justify-center gap-2 transition-colors shadow-[2px_2px_0px_#27170E]">
+              <span>ORDER NOW</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Product 3: Date Milkshake -->
+        <div class="bg-cream text-anchor rounded-3xl p-5 border-3 border-anchor shadow-offset-lav flex flex-col justify-between hover:translate-y-[-4px] transition-transform duration-300">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="bg-butter text-anchor border border-anchor px-2.5 py-1 rounded-full font-mono text-[10px] font-black uppercase">
+                SWEET & HEALTHY 🌴
+              </span>
+              <span class="font-mono text-xs font-bold">NATURAL SUGAR</span>
+            </div>
+            
+            <div class="aspect-square rounded-2xl overflow-hidden border-2 border-anchor mb-4 bg-popPink shadow-sm">
+              <img src={dateShakeImg} alt="Date Milkshake" class="w-full h-full object-cover" />
+            </div>
+
+            <h3 class="font-display text-2xl text-anchor mb-1">DATE MILKSHAKE</h3>
+            <p class="font-mono text-[11px] text-anchor/80 font-semibold uppercase mb-4">ميلك شيك تمر • Natural Date Sweetness • High Protein</p>
+          </div>
+
+          <div class="pt-4 border-t border-anchor/10">
+            <a href="tel:+9647739999038" class="w-full bg-butter hover:bg-butter-gold text-anchor font-mono text-xs font-extrabold uppercase py-3 rounded-xl border border-anchor flex items-center justify-center gap-2 transition-colors shadow-[2px_2px_0px_#27170E]">
+              <span>ORDER NOW</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Product 4: Cold Brew -->
+        <div class="bg-cream text-anchor rounded-3xl p-5 border-3 border-anchor shadow-offset-lav flex flex-col justify-between hover:translate-y-[-4px] transition-transform duration-300">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="bg-popPink text-anchor border border-anchor px-2.5 py-1 rounded-full font-mono text-[10px] font-black uppercase">
+                SLOW BREWED 🧊
+              </span>
+              <span class="font-mono text-xs font-bold">18H STEEP</span>
+            </div>
+            
+            <div class="aspect-square rounded-2xl overflow-hidden border-2 border-anchor mb-4 bg-popLav shadow-sm">
+              <img src={coldBrewImg} alt="Cold Brew" class="w-full h-full object-cover" />
+            </div>
+
+            <h3 class="font-display text-2xl text-anchor mb-1">COLD BREW</h3>
+            <p class="font-mono text-[11px] text-anchor/80 font-semibold uppercase mb-4">وقت أكثر واستخراج أهدأ • Crisp • 0 Calories</p>
+          </div>
+
+          <div class="pt-4 border-t border-anchor/10">
+            <a href="tel:+9647739999038" class="w-full bg-butter hover:bg-butter-gold text-anchor font-mono text-xs font-extrabold uppercase py-3 rounded-xl border border-anchor flex items-center justify-center gap-2 transition-colors shadow-[2px_2px_0px_#27170E]">
+              <span>ORDER NOW</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5. CHECKERBOARD STRIP TRANSITION (Dark to Cream) -->
+  <div class="w-full h-8 sm:h-12 pixel-checker-dark border-y-2 border-anchor"></div>
+
+  <!-- 6. CAFÉ EXPERIENCE & VIBE -->
+  <section class="py-24 sm:py-32 bg-cream relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left: Experience Text & Chips -->
+        <div class="lg:col-span-5 flex flex-col items-start">
+          <span class="font-mono text-xs font-extrabold uppercase tracking-widest text-anchor bg-popLav px-3 py-1 rounded-full mb-4 inline-block border border-anchor">
+            THE ATMOSPHERE
+          </span>
+          <h2 class="text-4xl sm:text-6xl text-anchor font-display tracking-tight mb-6">
+            COME FOR THE CUP. <br/>
+            STAY FOR THE MOMENT.
+          </h2>
+          <p class="text-anchor/80 font-sans text-base leading-relaxed mb-8">
+            اللحظات الهادئة خلي ريفريش يكملها. Whether you're working, catching up with friends, or taking a peaceful midday break, Refresh is designed as your healthy sanctuary in Al-Mansour.
+          </p>
+
+          <!-- Vibe Chips -->
+          <div class="flex flex-wrap gap-2.5 mb-8">
+            <span class="border-2 border-anchor bg-cream px-3.5 py-1.5 rounded-full font-mono text-xs font-bold uppercase text-anchor">
+              ☕ CALM AMBIANCE
+            </span>
+            <span class="border-2 border-anchor bg-butter px-3.5 py-1.5 rounded-full font-mono text-xs font-bold uppercase text-anchor">
+              🍃 GUILT-FREE MENU
+            </span>
+            <span class="border-2 border-anchor bg-popPink px-3.5 py-1.5 rounded-full font-mono text-xs font-bold uppercase text-anchor">
+              ⚡ POSITIVE ENERGY
+            </span>
+          </div>
+
+          <a 
+            href="https://maps.google.com/?q=Refresh+Cafe+Al-Mansour+Baghdad" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="bg-anchor hover:bg-anchor-light text-butter font-mono text-xs sm:text-sm font-extrabold uppercase px-6 py-3.5 rounded-full border-2 border-anchor shadow-offset-pink hover:translate-y-[-2px] transition-all flex items-center gap-3"
+          >
+            <span>GET DIRECTIONS TO AL-MANSOUR</span>
+            <span>↗</span>
+          </a>
+        </div>
+
+        <!-- Right: Interactive Gallery Showcase -->
+        <div class="lg:col-span-7">
+          <div class="relative">
+            <!-- Main Featured Experience Photo -->
+            <div class="relative bg-cream p-3 sm:p-4 rounded-[32px] border-3 border-anchor shadow-offset-pink-lg">
+              <div class="aspect-[16/10] rounded-[24px] overflow-hidden border-2 border-anchor bg-anchor relative">
+                <img 
+                  id="mainExperienceImg"
+                  src={summerImg} 
+                  alt="Refresh Cafe Baghdad Experience" 
+                  class="w-full h-full object-cover transition-opacity duration-300"
+                />
+              </div>
+            </div>
+
+            <!-- Overlapping Thumbnail Strip -->
+            <div class="flex items-center gap-3 mt-4 sm:-mt-8 sm:ml-6 relative z-10 overflow-x-auto pb-2 sm:pb-0">
+              <button 
+                onclick={`document.getElementById('mainExperienceImg').src='${summerImg}'`}
+                class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-3 border-anchor shrink-0 bg-butter hover:scale-105 transition-transform shadow-offset-dark focus:ring-4 focus:ring-butter"
+                aria-label="View Summer Drinks Photo"
+              >
+                <img src={summerImg} alt="Refresh drink" class="w-full h-full object-cover" />
+              </button>
+              <button 
+                onclick={`document.getElementById('mainExperienceImg').src='${sereneImg}'`}
+                class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-3 border-anchor shrink-0 bg-popLav hover:scale-105 transition-transform shadow-offset-dark focus:ring-4 focus:ring-popLav"
+                aria-label="View Cafe Atmosphere Photo"
+              >
+                <img src={sereneImg} alt="Quiet moment" class="w-full h-full object-cover" />
+              </button>
+              <button 
+                onclick={`document.getElementById('mainExperienceImg').src='${dessertImg}'`}
+                class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-3 border-anchor shrink-0 bg-popPink hover:scale-105 transition-transform shadow-offset-dark focus:ring-4 focus:ring-popPink"
+                aria-label="View Healthy Dessert Photo"
+              >
+                <img src={dessertImg} alt="Healthy dessert" class="w-full h-full object-cover" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. THE CRAFT (Tabbed Process in Anchor Dark Card) -->
+  <section id="craft" class="py-24 sm:py-32 bg-cream-tint relative border-t-2 border-anchor">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
+        <div>
+          <span class="font-mono text-xs uppercase font-extrabold tracking-widest text-butter bg-anchor px-3 py-1 rounded-full mb-3 inline-block">
+            THE CRAFT & PHILOSOPHY
+          </span>
+          <h2 class="text-4xl sm:text-6xl text-anchor font-display tracking-tight">
+            SIMPLE INGREDIENTS. <br/>
+            CAREFUL HANDS.
+          </h2>
+        </div>
+        <CheckerCluster theme="butter-lav" rows={2} cols={5} />
+      </div>
+
+      <!-- Rounded Dark Card with Steps -->
+      <div class="bg-anchor text-cream rounded-[36px] p-6 sm:p-12 border-3 border-anchor shadow-offset-pink-lg">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-10">
+          
+          <div class="lg:col-span-7">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-8 h-8 rounded-lg bg-popLav text-anchor font-mono font-black flex items-center justify-center text-sm">
+                01
+              </span>
+              <span class="font-mono text-xs font-bold uppercase tracking-widest text-butter">
+                SELECTION & PURITY
+              </span>
+            </div>
+            
+            <h3 class="font-display text-3xl sm:text-4xl text-cream mb-4">
+              PREMIUM CEREMONIAL & SPECIALTY BEANS
+            </h3>
+            
+            <p class="text-cream/80 font-sans text-sm sm:text-base leading-relaxed mb-6">
+              We source single-origin coffee beans and vibrant ceremonial-grade green matcha. Every sweetener used is natural, tested, and keto/diet compatible without artificial chemical aftertaste.
+            </p>
+
+            <div class="flex flex-wrap gap-2 font-mono text-xs">
+              <span class="bg-anchor-light border border-cream/20 px-3 py-1 rounded-md text-butter">No Refined Sugar</span>
+              <span class="bg-anchor-light border border-cream/20 px-3 py-1 rounded-md text-popPink">Plant-based Milk Options</span>
+              <span class="bg-anchor-light border border-cream/20 px-3 py-1 rounded-md text-popLav">Freshly Brewed Daily</span>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="relative">
+              <div class="w-64 sm:w-72 aspect-square rounded-2xl overflow-hidden border-2 border-cream bg-popLav shadow-offset-pink">
+                <img src={heroDrinkImg} alt="Matcha Quality" class="w-full h-full object-cover" />
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 3 Step Tabs Row -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8 border-t border-cream/20">
+          <div class="bg-anchor-light p-4 rounded-2xl border border-cream/10">
+            <div class="font-mono text-xs text-popPink font-black mb-1">STEP 02</div>
+            <div class="font-display text-lg text-cream mb-1">CALCULATED EXTRACTION</div>
+            <p class="text-xs text-cream/70 font-sans">Precision grams, precise water temperature & 18hr slow drops.</p>
+          </div>
+          <div class="bg-anchor-light p-4 rounded-2xl border border-cream/10">
+            <div class="font-mono text-xs text-butter font-black mb-1">STEP 03</div>
+            <div class="font-display text-lg text-cream mb-1">BALANCED FLAVOR</div>
+            <p class="text-xs text-cream/70 font-sans">Velvety textures mixed to preserve healthy antioxidants.</p>
+          </div>
+          <div class="bg-anchor-light p-4 rounded-2xl border border-cream/10">
+            <div class="font-mono text-xs text-popLav font-black mb-1">STEP 04</div>
+            <div class="font-display text-lg text-cream mb-1">SERVED WITH CARE</div>
+            <p class="text-xs text-cream/70 font-sans">Freshly prepared in Al-Mansour for immediate invigorating energy.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 8. REVIEWS SECTION (Authentic Community Feedback) -->
+  <section id="reviews" class="py-24 sm:py-32 bg-cream relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <!-- Headline & Rating -->
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="font-mono text-xs uppercase font-extrabold tracking-widest text-anchor bg-butter px-3.5 py-1.5 rounded-full mb-4 inline-block border-2 border-anchor shadow-[2px_2px_0px_#27170E]">
+          COMMUNITY FEEDBACK
+        </span>
+        <h2 class="text-4xl sm:text-6xl text-anchor font-display tracking-tight mb-4">
+          A FEW WORDS FROM OUR PEOPLE.
+        </h2>
+        <div class="flex items-center justify-center gap-2 font-mono text-sm font-bold text-anchor">
+          <span class="text-starGold">★★★★★</span>
+          <span>5.0 / 5.0 Rating on Google Places</span>
+        </div>
+      </div>
+
+      <!-- Featured Master Testimonial Card -->
+      <div class="relative bg-cream-tint rounded-3xl p-6 sm:p-10 border-3 border-anchor shadow-offset-pink-lg mb-8">
+        <span class="absolute top-4 right-6 sm:top-6 sm:right-8 font-display text-6xl sm:text-8xl text-popLav leading-none select-none">
+          “
+        </span>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+          <div class="md:col-span-3 flex justify-center">
+            <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-3 border-anchor bg-butter flex items-center justify-center font-display text-3xl text-anchor shadow-offset-dark">
+              RF 🤎
+            </div>
+          </div>
+          <div class="md:col-span-9 relative z-10">
+            <div class="flex text-starGold text-lg mb-3">★★★★★</div>
+            <p class="font-display text-2xl sm:text-3xl text-anchor mb-4 uppercase leading-snug">
+              "احسن كافيه دايت في بغداد! الطعم والنكهة ولا غلطة، ومشروبات الماتشا والكولد برو تجنن وبدون أي سعرات إضافية."
+            </p>
+            <div class="flex items-center gap-3">
+              <span class="font-mono text-xs font-black uppercase text-anchor">Baghdad Local Guide</span>
+              <span class="text-anchor/40">•</span>
+              <span class="font-mono text-xs font-bold text-popPink bg-anchor px-2 py-0.5 rounded">Verified 5★ Review</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 Small Review Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="bg-cream rounded-2xl p-5 border-2 border-anchor shadow-offset-dark">
+          <div class="flex text-starGold text-sm mb-2">★★★★★</div>
+          <p class="text-xs sm:text-sm font-sans font-medium text-anchor mb-4">
+            "Finally a place in Al-Mansour that understands dietary needs with great specialty coffee. The Date Milkshake is unmatched!"
+          </p>
+          <div class="flex items-center gap-2 pt-3 border-t border-anchor/10">
+            <div class="w-7 h-7 rounded-full bg-popLav border border-anchor flex items-center justify-center text-[10px] font-bold">A</div>
+            <span class="font-mono text-xs font-bold text-anchor">Ahmed M.</span>
+          </div>
+        </div>
+
+        <div class="bg-cream rounded-2xl p-5 border-2 border-anchor shadow-offset-dark">
+          <div class="flex text-starGold text-sm mb-2">★★★★★</div>
+          <p class="text-xs sm:text-sm font-sans font-medium text-anchor mb-4">
+            "المكان هادئ جداً والخدمة ممتازة، اللاتيه الدايت نفس الطعم الأصلي بدون تانيب ضمير."
+          </p>
+          <div class="flex items-center gap-2 pt-3 border-t border-anchor/10">
+            <div class="w-7 h-7 rounded-full bg-butter border border-anchor flex items-center justify-center text-[10px] font-bold">Z</div>
+            <span class="font-mono text-xs font-bold text-anchor">Zainab K.</span>
+          </div>
+        </div>
+
+        <div class="bg-cream rounded-2xl p-5 border-2 border-anchor shadow-offset-dark">
+          <div class="flex text-starGold text-sm mb-2">★★★★★</div>
+          <p class="text-xs sm:text-sm font-sans font-medium text-anchor mb-4">
+            "The iced matcha is super smooth and refreshing. Best spot to fuel up after workouts or during work sessions."
+          </p>
+          <div class="flex items-center gap-2 pt-3 border-t border-anchor/10">
+            <div class="w-7 h-7 rounded-full bg-popPink border border-anchor flex items-center justify-center text-[10px] font-bold">M</div>
+            <span class="font-mono text-xs font-bold text-anchor">Mustafa H.</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 9. MARQUEE RIBBON 2 (Golden Butter) -->
+  <MarqueeRibbon 
+    words={["REFRESH YOUR DAY", "AL-MANSOUR BAGHDAD", "07739999038", "DIET COFFEE", "GUILT FREE", "ICED MATCHA"]} 
+    bgColor="bg-butter-gold"
+    tiltClass="rotate-1"
+    direction="right"
+  />
+
+  <!-- 10. FOOTER / VISIT SECTION (Anchor Dark) -->
+  <footer id="contact" class="bg-anchor text-cream pt-20 pb-12 border-t-3 border-anchor relative overflow-hidden">
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Top Grid: Address & Opening Status Cards -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
+        
+        <!-- Brand Summary Column -->
+        <div class="lg:col-span-5 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-butter bg-butter shadow-sm">
+                <img src={heroDrinkImg} alt="Refresh Cafe" class="w-full h-full object-cover" />
+              </div>
+              <div>
+                <span class="font-display text-3xl text-butter tracking-tight">REFRESH CAFE</span>
+                <p class="font-mono text-xs text-cream/70 font-bold uppercase">كافيه ريفريش • بغداد المنصور</p>
+              </div>
+            </div>
+            
+            <p class="text-cream/80 text-sm font-sans leading-relaxed mb-6 max-w-sm">
+              {instaData.bio}
+            </p>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <a 
+              href="https://instagram.com/refresh.baghdad" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="bg-popPink text-anchor font-mono text-xs font-extrabold uppercase px-4 py-2.5 rounded-full border border-anchor flex items-center gap-2 hover:bg-white transition-colors"
+            >
+              <span>@refresh.baghdad</span>
+              <span>↗</span>
+            </a>
+            <a 
+              href="tel:+9647739999038" 
+              class="bg-butter text-anchor font-mono text-xs font-extrabold uppercase px-4 py-2.5 rounded-full border border-anchor flex items-center gap-2 hover:bg-butter-gold transition-colors"
+            >
+              <span>CALL NOW</span>
+              <span>📞</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Info Cards -->
+        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+          
+          <!-- Location Card (Cream) -->
+          <div class="bg-cream text-anchor p-6 rounded-3xl border-3 border-anchor shadow-offset-pink flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-3">
+                <span class="font-mono text-[10px] font-black uppercase bg-popLav px-2.5 py-1 rounded-md border border-anchor">
+                  LOCATION & MAP
+                </span>
+                <span class="w-6 h-6 rounded-full bg-butter border border-anchor flex items-center justify-center font-bold text-xs">📍</span>
+              </div>
+              <h3 class="font-display text-xl text-anchor mb-2">AL-MANSOUR, BAGHDAD</h3>
+              <p class="font-mono text-xs text-anchor/80 font-semibold mb-4 leading-relaxed">
+                المنصور - الداوودي - شارع مطعم هيل و زعفران - مجاور مطعم دايت ستي
+              </p>
+            </div>
+            <a 
+              href="https://maps.google.com/?q=Refresh+Cafe+Al-Mansour+Baghdad" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="w-full bg-anchor text-butter font-mono text-xs font-bold uppercase py-2.5 rounded-xl border border-anchor text-center hover:bg-anchor-light transition-colors"
+            >
+              OPEN IN GOOGLE MAPS ↗
+            </a>
+          </div>
+
+          <!-- Hours & Status Card (Golden Butter) -->
+          <div class="bg-butter text-anchor p-6 rounded-3xl border-3 border-anchor shadow-offset-lav flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-3">
+                <span class="font-mono text-[10px] font-black uppercase bg-cream px-2.5 py-1 rounded-md border border-anchor">
+                  OPENING HOURS
+                </span>
+                <span class="flex items-center gap-1.5 font-mono text-[10px] font-black bg-emerald-500 text-white px-2 py-0.5 rounded-full">
+                  <span class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
+                  OPEN NOW
+                </span>
+              </div>
+              <h3 class="font-display text-xl text-anchor mb-2">EVERY DAY SERVICE</h3>
+              <p class="font-mono text-xs text-anchor/90 font-bold mb-1">
+                Open Daily: Morning till Late Night
+              </p>
+              <p class="font-sans text-xs text-anchor/80 mb-4">
+                Specialty diet coffees, smoothies, and matcha brewed fresh all day.
+              </p>
+            </div>
+            
+            <a 
+              href="tel:+9647739999038" 
+              class="w-full bg-anchor text-cream font-mono text-xs font-bold uppercase py-2.5 rounded-xl border border-anchor text-center hover:bg-anchor-light transition-colors"
+            >
+              PHONE: 07739999038 📞
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Bottom Copyright Row -->
+      <div class="pt-8 border-t border-cream/15 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-cream/60">
+        <div>
+          © {new Date().getFullYear()} REFRESH CAFE (ريفريش كافيه). ALL RIGHTS RESERVED.
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="#about" class="hover:text-butter transition-colors">ABOUT</a>
+          <a href="#menu" class="hover:text-butter transition-colors">MENU</a>
+          <a href="#contact" class="hover:text-butter transition-colors">VISIT US</a>
+          <a href="https://instagram.com/refresh.baghdad" target="_blank" rel="noopener noreferrer" class="hover:text-butter transition-colors">INSTAGRAM</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
 </Layout>

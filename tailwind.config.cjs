@@ -4,67 +4,45 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Role-based palette tokens
-        anchor: {
-          DEFAULT: '#2E1A11', // Deep chocolate brown
-          light: '#4A2E20',
-        },
-        base: {
-          DEFAULT: '#FDF8F0', // Warm cream / off-white
-          warm: '#F5EBE0',    // Warmer cream for Craft section
-        },
-        butter: {
-          DEFAULT: '#FCD34D', // Soft buttery yellow (Primary Accent tint)
-          strong: '#F59E0B',  // Stronger golden for buttons
-        },
-        pop1: {
-          DEFAULT: '#F472B6', // Bubblegum pink
-        },
-        pop2: {
-          DEFAULT: '#A78BFA', // Periwinkle lavender
-        },
-        star: {
-          DEFAULT: '#FBBF24', // Gold
-        }
+        anchor: '#27170E',         // Rich chocolate brown
+        'anchor-light': '#3B2317',
+        cream: '#FFFDF9',          // Base light
+        'cream-tint': '#FBF6EE',    // Warm tinted background
+        butter: '#FFE999',         // Primary Accent
+        'butter-gold': '#F5D365',   // Button & CTA gold
+        popPink: '#FFAAC9',        // Pop Accent 1 (Bubblegum)
+        popLav: '#C5CAFE',         // Pop Accent 2 (Periwinkle)
+        starGold: '#F59E0B',
       },
       fontFamily: {
-        display: ['Anton', 'sans-serif'],
-        label: ['Space Mono', 'monospace'],
-        body: ['DM Sans', 'sans-serif'],
+        display: ['"Cabinet Grotesk"', '"Impact"', '"Arial Black"', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+        sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        'hard-pink': '12px 12px 0px 0px #F472B6',
-        'hard-dark': '8px 8px 0px 0px #2E1A11',
-        'hard-cream': '8px 8px 0px 0px #FDF8F0',
-        'float': '0 20px 40px rgba(46, 26, 17, 0.15)',
-      },
-      borderRadius: {
-        'card': '24px',
-        'blob': '40% 60% 70% 30% / 40% 50% 60% 50%',
+        'offset-pink': '8px 8px 0px #FFAAC9',
+        'offset-pink-lg': '14px 14px 0px #FFAAC9',
+        'offset-lav': '8px 8px 0px #C5CAFE',
+        'offset-dark': '6px 6px 0px #27170E',
+        'offset-butter': '6px 6px 0px #F5D365',
       },
       animation: {
-        'marquee': 'marquee 25s linear infinite',
-        'marquee-reverse': 'marquee-reverse 25s linear infinite',
+        'marquee-left': 'marquee 25s linear infinite',
+        'marquee-right': 'marquee-rev 25s linear infinite',
         'float-slow': 'float 6s ease-in-out infinite',
-        'float-delay': 'float 6s ease-in-out 3s infinite',
-        'pop-in': 'popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
       },
       keyframes: {
         marquee: {
-          '0%': { transform: 'translateX(0)' },
+          '0%': { transform: 'translateX(0%)' },
           '100%': { transform: 'translateX(-50%)' },
         },
-        'marquee-reverse': {
+        'marquee-rev': {
           '0%': { transform: 'translateX(-50%)' },
-          '100%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(0%)' },
         },
         float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-15px)' },
-        },
-        popIn: {
-          '0%': { transform: 'scale(0.8) translateY(20px)', opacity: '0' },
-          '100%': { transform: 'scale(1) translateY(0)', opacity: '1' },
+          '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+          '50%': { transform: 'translateY(-10px) rotate(2deg)' },
         }
       }
     },

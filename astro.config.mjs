@@ -1,10 +1,8 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
-// https://astro.build/config
 export default defineConfig({
   base: '/refresh-cafe/',
   output: 'static',
-  integrations: [tailwind()],
-  site: 'https://refresh-cafe.astro', // Replace with actual domain
+  integrations: [tailwind()]
 });

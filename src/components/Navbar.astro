@@ -1,42 +1,52 @@
 ---
-const logoSrc = "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-19/616235104_17913448284266823_7616257522537543457_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=109&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=Y6m5MGA-af4Q7kNvwEaaf8s&_nc_oc=AdoJYDmk00uO0U8jOWQmT_xgORL8ewmPPkv55QnIWQUEQJS4gD-HdvWGoQIvNKABwLU&_nc_zt=24&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=9zWxO4kA-G6T5PIw7a6lHQ&_nc_ss=7ba8c&oh=00_AQP8MVo4Z9DVcT9j5c_h2SQAtIev1cWF09Wlb0hFaPI2Cg&oe=6AC1F8FA";
-const instaUrl = "https://instagram.com/refresh.baghdad";
-const mapUrl = "https://maps.google.com/?q=شارع+هيل+وزعفران+مجاور+دايت+ستي,+Baghdad,+Baghdad+Governorate,+10011,+Iraq";
+const logoUrl = "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-19/616235104_17913448284266823_7616257522537543457_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=109&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=Y6m5MGA-af4Q7kNvwEaaf8s&_nc_oc=AdoJYDmk00uO0U8jOWQmT_xgORL8ewmPPkv55QnIWQUEQJS4gD-HdvWGoQIvNKABwLU&_nc_zt=24&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=9zWxO4kA-G6T5PIw7a6lHQ&_nc_ss=7ba8c&oh=00_AQP8MVo4Z9DVcT9j5c_h2SQAtIev1cWF09Wlb0hFaPI2Cg&oe=6AC1F8FA";
 ---
 
-<nav class="fixed top-4 left-0 right-0 z-50 px-4 lg:px-8">
-  <div class="max-w-6xl mx-auto bg-base/95 backdrop-blur-md border-2 border-anchor/10 rounded-full px-6 py-3 shadow-sm flex items-center justify-between transition-transform duration-300">
-    
-    <!-- Left Links -->
-    <div class="hidden md:flex items-center space-x-6 flex-1">
-      <a href="#about" class="font-label text-xs font-bold tracking-widest uppercase hover:text-butter-strong transition-colors">About</a>
-      <a href="#menu" class="font-label text-xs font-bold tracking-widest uppercase hover:text-butter-strong transition-colors">Menu</a>
-      <a href="#experience" class="font-label text-xs font-bold tracking-widest uppercase hover:text-butter-strong transition-colors">Vibe</a>
+<header class="fixed top-4 sm:top-6 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
+  <nav class="pointer-events-auto bg-cream/95 backdrop-blur-md border-2 border-anchor rounded-full px-4 sm:px-6 py-2.5 sm:py-3 shadow-offset-dark flex items-center justify-between gap-4 sm:gap-8 max-w-4xl w-full transition-all duration-300 hover:translate-y-[-2px]">
+    <!-- Left Navigation -->
+    <div class="hidden md:flex items-center gap-6 text-xs font-mono font-bold uppercase tracking-wider text-anchor">
+      <a href="#about" class="hover:text-popPink transition-colors">About Us</a>
+      <a href="#menu" class="hover:text-popPink transition-colors">Diet Menu</a>
+      <a href="#craft" class="hover:text-popPink transition-colors">The Craft</a>
     </div>
 
     <!-- Center Logo -->
-    <a href="/" class="group relative flex-shrink-0">
-      <div class="w-12 h-12 lg:w-14 lg:h-14 rounded-full overflow-hidden border-2 border-anchor/10 bg-white transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110 shadow-sm">
-        <img src={logoSrc} alt="Refresh Cafe Logo" class="w-full h-full object-cover" />
+    <a href="#" class="flex items-center gap-3 group mx-auto md:mx-0">
+      <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden border-2 border-anchor shadow-sm transition-transform duration-300 group-hover:rotate-6 group-hover:scale-105 bg-butter">
+        <img src={logoUrl} alt="Refresh Cafe Logo" class="w-full h-full object-cover" />
+      </div>
+      <div class="flex flex-col text-left">
+        <span class="font-display text-lg sm:text-xl text-anchor leading-none tracking-tight">REFRESH</span>
+        <span class="font-mono text-[9px] uppercase tracking-widest text-anchor/70 font-bold">1ST DIET CAFE • BGD</span>
       </div>
     </a>
 
-    <!-- Right Actions -->
-    <div class="flex items-center justify-end space-x-4 flex-1">
-      <a href={mapUrl} target="_blank" rel="noopener" class="hidden lg:block font-label text-xs font-bold tracking-widest uppercase hover:text-pop1 transition-colors">Visit Us</a>
-      <a href={instaUrl} target="_blank" rel="noopener" class="w-10 h-10 bg-butter text-anchor rounded-full flex items-center justify-center hover:bg-butter-strong hover:text-base transition-colors shadow-hard-dark hover:shadow-hard-pink hover:-translate-y-1 duration-200">
-        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772 4.902 4.902 0 011.772-1.153c.636-.247 1.363-.416 2.427-.465C9.51 2.013 9.864 2 12.315 2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 8.117a3.117 3.117 0 110-6.234 3.117 3.117 0 010 6.234zm5.162-8.283a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" clip-rule="evenodd" />
-        </svg>
+    <!-- Right Navigation & Contact -->
+    <div class="flex items-center gap-3 sm:gap-4">
+      <a href="#reviews" class="hidden sm:inline-block font-mono text-xs font-bold uppercase tracking-wider hover:text-popPink transition-colors">
+        Reviews
       </a>
       
-      <!-- Mobile Menu Button (Visual Only for static demo) -->
-      <button class="md:hidden w-10 h-10 flex items-center justify-center text-anchor" aria-label="Open Menu">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      <a 
+        href="tel:+9647739999038" 
+        class="bg-butter hover:bg-butter-gold border-2 border-anchor text-anchor font-mono text-[11px] sm:text-xs font-extrabold uppercase px-3 sm:px-4 py-1.5 sm:py-2 rounded-full flex items-center gap-2 shadow-[2px_2px_0px_#27170E] active:translate-y-[1px] active:shadow-none transition-all"
+      >
+        <span>07739999038</span>
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+      </a>
+
+      <a 
+        href="https://instagram.com/refresh.baghdad" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-popPink border-2 border-anchor flex items-center justify-center text-anchor font-bold hover:rotate-12 transition-transform shadow-[2px_2px_0px_#27170E]"
+        aria-label="Instagram Profile"
+      >
+        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
         </svg>
-      </button>
+      </a>
     </div>
-    
-  </div>
-</nav>
+  </nav>
+</header>
