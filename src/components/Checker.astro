@@ -1,0 +1,21 @@
+---
+const { variant = 'lavender-butter', className = '', size = 'md' } = Astro.props;
+
+const palettes = {
+  'lavender-butter': ['bg-lavenderpop', 'bg-butter'],
+  'pink-butter': ['bg-pinkpop', 'bg-butter'],
+  'dark-cream': ['bg-anchor', 'bg-cream']
+};
+const [c1, c2] = palettes[variant] || palettes['lavender-butter'];
+const sizeClass = size === 'sm' ? 'h-3 w-3' : size === 'lg' ? 'h-6 w-6' : 'h-4 w-4';
+const cells = Array.from({ length: 25 }, (_, i) => ({
+  color: (Math.floor(i / 5) + i) % 2 === 0 ? c1 : c2,
+  delay: i * 25
+}));
+---
+
+<div class={`grid grid-cols-5 gap-1.5 ${className}`} aria-hidden="true">
+  {cells.map((cell, i) => (
+    <div class={`checker-cell ${sizeClass} ${cell.color} rounded-[2px]`} style={{ transitionDelay: `${cell.delay}ms` }}></div>
+  ))}
+</div>

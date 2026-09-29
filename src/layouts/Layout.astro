@@ -1,106 +1,119 @@
 ---
-interface Props {
-  title?: string;
-  description?: string;
-}
+const title = Astro.props.title || 'Refresh Cafe — First Diet Café in Baghdad';
+const description = Astro.props.description || 'Refresh Cafe is Baghdad’s first diet café. Specialty matcha, cold brew, diet lattes and date shakes made for pleasure and health.';
+const profilePic = 'https://scontent-ams2-1.cdninstagram.com/v/t51.82787-19/616235104_17913448284266823_7616257522537543457_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=109&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=Y6m5MGA-af4Q7kNvwEaaf8s&_nc_oc=AdoJYDmk00uO0U8jOWQmT_xgORL8ewmPPkv55QnIWQUEQJS4gD-HdvWGoQIvNKABwLU&_nc_zt=24&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=9zWxO4kA-G6T5PIw7a6lHQ&_nc_ss=7ba8c&oh=00_AQP8MVo4Z9DVcT9j5c_h2SQAtIev1cWF09Wlb0hFaPI2Cg&oe=6AC1F8FA';
 
-const {
-  title = "Refresh Cafe | First Diet & Healthy Specialty Cafe in Baghdad",
-  description = "The first diet cafe in Baghdad offering the true balance of guilt-free indulgence, specialty cold brew, protein shakes & iced matcha. Located in Al-Mansour."
-} = Astro.props;
-
-const logoUrl = "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-19/616235104_17913448284266823_7616257522537543457_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=109&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=Y6m5MGA-af4Q7kNvwEaaf8s&_nc_oc=AdoJYDmk00uO0U8jOWQmT_xgORL8ewmPPkv55QnIWQUEQJS4gD-HdvWGoQIvNKABwLU&_nc_zt=24&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=9zWxO4kA-G6T5PIw7a6lHQ&_nc_ss=7ba8c&oh=00_AQP8MVo4Z9DVcT9j5c_h2SQAtIev1cWF09Wlb0hFaPI2Cg&oe=6AC1F8FA";
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'CafeOrCoffeeShop',
+  name: 'Refresh Cafe',
+  image: profilePic,
+  telephone: '+964 773 999 9038',
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '5',
+    reviewCount: '5'
+  },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'شارع هيل وزعفران مجاور دايت ستي',
+    addressLocality: 'Baghdad',
+    addressCountry: 'IQ'
+  },
+  sameAs: ['https://www.instagram.com/refresh.baghdad/']
+};
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={logoUrl} />
-    <meta property="og:type" content="website" />
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content={profilePic} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+</head>
+<body class="bg-cream font-body text-anchor antialiased">
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-butter focus:px-5 focus:py-3 focus:font-mono focus:text-xs focus:uppercase focus:tracking-widest focus:text-anchor focus:shadow-hard">Skip to content</a>
+  <slot />
+  <script is:inline>
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const revealEls = document.querySelectorAll('.reveal');
+    const cellEls = document.querySelectorAll('.checker-cell');
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800;900&family=JetBrains+Mono:wght@500;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Local Business Schema -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "CafeOrCoffeeShop",
-        "name": "Refresh Cafe",
-        "image": "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-19/616235104_17913448284266823_7616257522537543457_n.jpg",
-        "telephone": "+9647739999038",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Al-Mansour, Al-Dawoodi, Hayl & Zaafaran St, Next to Diet City",
-          "addressLocality": "Baghdad",
-          "postalCode": "10011",
-          "addressCountry": "IQ"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "5.0",
-          "reviewCount": "5"
-        },
-        "servesCuisine": ["Diet Drinks", "Specialty Coffee", "Iced Matcha", "Healthy Shakes"]
-      }
-    </script>
-  </head>
-  <body class="bg-cream text-anchor font-sans antialiased overflow-x-hidden selection:bg-butter selection:text-anchor">
-    <slot />
-  </body>
-</html>
-
-<style is:global>
-  h1, h2, h3, .font-display {
-    font-family: 'Cabinet Grotesk', Impact, sans-serif;
-    letter-spacing: -0.03em;
-    line-height: 0.95;
-    text-transform: uppercase;
-  }
-  .font-mono {
-    font-family: 'JetBrains Mono', monospace;
-  }
-  
-  /* Hard tactile buttons & cards */
-  .pixel-checker-sm {
-    background-image: 
-      linear-gradient(45deg, #FFE999 25%, transparent 25%), 
-      linear-gradient(-45deg, #FFE999 25%, transparent 25%), 
-      linear-gradient(45deg, transparent 75%, #FFE999 75%), 
-      linear-gradient(-45deg, transparent 75%, #FFE999 75%);
-    background-size: 16px 16px;
-    background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
-    background-color: #C5CAFE;
-  }
-
-  .pixel-checker-dark {
-    background-image: 
-      linear-gradient(45deg, #27170E 25%, transparent 25%), 
-      linear-gradient(-45deg, #27170E 25%, transparent 25%), 
-      linear-gradient(45deg, transparent 75%, #27170E 75%), 
-      linear-gradient(-45deg, transparent 75%, #27170E 75%);
-    background-size: 24px 24px;
-    background-position: 0 0, 0 12px, 12px -12px, -12px 0px;
-    background-color: #FFFDF9;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .animate-marquee-left,
-    .animate-marquee-right,
-    .animate-float-slow {
-      animation: none !important;
+    if (reduced) {
+      revealEls.forEach((el) => el.classList.add('is-visible'));
+      cellEls.forEach((el) => el.classList.add('is-visible'));
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      revealEls.forEach((el) => io.observe(el));
+      cellEls.forEach((el) => io.observe(el));
     }
-  }
-</style>
+  </script>
+  <style is:global>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #FDF8F0;
+      color: #2A170D;
+    }
+    ::selection {
+      background: #F6D06B;
+      color: #2A170D;
+    }
+    :focus-visible {
+      outline: 3px solid #F7A0B2;
+      outline-offset: 2px;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+    .checker-cell {
+      opacity: 0;
+      transform: scale(0.3);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .checker-cell.is-visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .checker-cell {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .animate-marquee, .animate-marquee-reverse, .animate-float, .animate-wiggle {
+        animation: none !important;
+      }
+    }
+  </style>
+</body>
+</html>

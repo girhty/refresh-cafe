@@ -4,48 +4,61 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        anchor: '#27170E',         // Rich chocolate brown
-        'anchor-light': '#3B2317',
-        cream: '#FFFDF9',          // Base light
-        'cream-tint': '#FBF6EE',    // Warm tinted background
-        butter: '#FFE999',         // Primary Accent
-        'butter-gold': '#F5D365',   // Button & CTA gold
-        popPink: '#FFAAC9',        // Pop Accent 1 (Bubblegum)
-        popLav: '#C5CAFE',         // Pop Accent 2 (Periwinkle)
-        starGold: '#F59E0B',
+        anchor: {
+          DEFAULT: '#2A170D',
+          soft: '#3A2519',
+          muted: '#5A3D2B'
+        },
+        cream: {
+          DEFAULT: '#FDF8F0',
+          warm: '#F7EEDF',
+          dark: '#EFE3CF'
+        },
+        butter: {
+          DEFAULT: '#F6D06B',
+          light: '#FBE7A5',
+          dark: '#E7B823'
+        },
+        pinkpop: '#F7A0B2',
+        lavenderpop: '#A6A1E8',
+        star: '#FFC531'
       },
       fontFamily: {
-        display: ['"Cabinet Grotesk"', '"Impact"', '"Arial Black"', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
-        sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['Anton', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
+        mono: ['"Space Mono"', 'monospace']
       },
       boxShadow: {
-        'offset-pink': '8px 8px 0px #FFAAC9',
-        'offset-pink-lg': '14px 14px 0px #FFAAC9',
-        'offset-lav': '8px 8px 0px #C5CAFE',
-        'offset-dark': '6px 6px 0px #27170E',
-        'offset-butter': '6px 6px 0px #F5D365',
-      },
-      animation: {
-        'marquee-left': 'marquee 25s linear infinite',
-        'marquee-right': 'marquee-rev 25s linear infinite',
-        'float-slow': 'float 6s ease-in-out infinite',
+        hard: '6px 6px 0 0 #2A170D',
+        'hard-pink': '10px 10px 0 0 #F7A0B2',
+        'hard-lavender': '10px 10px 0 0 #A6A1E8',
+        soft: '14px 18px 40px rgba(42, 23, 13, 0.16)'
       },
       keyframes: {
         marquee: {
-          '0%': { transform: 'translateX(0%)' },
-          '100%': { transform: 'translateX(-50%)' },
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' }
         },
-        'marquee-rev': {
+        marqueeR: {
           '0%': { transform: 'translateX(-50%)' },
-          '100%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(0)' }
         },
         float: {
-          '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-          '50%': { transform: 'translateY(-10px) rotate(2deg)' },
+          '0%, 100%': { transform: 'translateY(0) rotate(var(--tilt, 0deg))' },
+          '50%': { transform: 'translateY(-10px) rotate(var(--tilt, 0deg))' }
+        },
+        wiggle: {
+          '0%, 100%': { transform: 'rotate(0deg)' },
+          '50%': { transform: 'rotate(-6deg)' }
         }
+      },
+      animation: {
+        marquee: 'marquee 28s linear infinite',
+        'marquee-reverse': 'marqueeR 28s linear infinite',
+        float: 'float 6s ease-in-out infinite',
+        wiggle: 'wiggle 0.4s ease-in-out'
       }
-    },
+    }
   },
-  plugins: [],
+  plugins: []
 };

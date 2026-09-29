@@ -1,116 +1,113 @@
 ---
-const matchaImg = "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-15/794032623_17948492067266823_7578226426693012433_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=NYjctEAvy7cQ7kNvwFHmiSP&_nc_oc=Adph5_RVWf2icuScJwmhAxHO8P_RB8oZUWFhxo62FNyTEbrzne6WhCP-EQgxmMBZNo4&_nc_zt=23&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=cO0pZhQ1iJyLHDhTQ7H9Fw&_nc_ss=7ba8c&oh=00_AQNZ0AR79KsE0exUGsrTSfuBfJpq0kzO5sgxGTwTZIa6AA&oe=6AC1E3F9";
-const coldBrewImg = "https://scontent-ams2-1.cdninstagram.com/v/t15.5256-10/780949353_1596279635189869_1153598757660377946_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=siUSfyJphccQ7kNvwGXGNh3&_nc_oc=Adp5ClswIvrBuk9UMFF2r4wynoSF4eYDZSTdD_YMF--XlB9UJktW_sGhTUrsOYx9e-4&_nc_zt=23&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=cO0pZhQ1iJyLHDhTQ7H9Fw&_nc_ss=7ba8c&oh=00_AQMAFgIL7451-Jw8cT4NeJMKx_lYUvv1mzkKJx0-ZQRwJQ&oe=6AC1E8E3";
+import Checker from './Checker.astro';
+import Marquee from './Marquee.astro';
+
+const profilePic = 'https://scontent-ams2-1.cdninstagram.com/v/t51.82787-19/616235104_17913448284266823_7616257522537543457_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=109&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=Y6m5MGA-af4Q7kNvwEaaf8s&_nc_oc=AdoJYDmk00uO0U8jOWQmT_xgORL8ewmPPkv55QnIWQUEQJS4gD-HdvWGoQIvNKABwLU&_nc_zt=24&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=9zWxO4kA-G6T5PIw7a6lHQ&_nc_ss=7ba8c&oh=00_AQP8MVo4Z9DVcT9j5c_h2SQAtIev1cWF09Wlb0hFaPI2Cg&oe=6AC1F8FA';
+const instagramUrl = 'https://www.instagram.com/refresh.baghdad/';
+const phoneLink = 'tel:+9647739999038';
+const IMG = {
+  matcha: 'https://scontent-ams2-1.cdninstagram.com/v/t51.82787-15/794032623_17948492067266823_7578226426693012433_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=NYjctEAvy7cQ7kNvwFHmiSP&_nc_oc=Adph5_RVWf2icuScJwmhAxHO8P_RB8oZUWFhxo62FNyTEbrzne6WhCP-EQgxmMBZNo4&_nc_zt=23&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=cO0pZhQ1iJyLHDhTQ7H9Fw&_nc_ss=7ba8c&oh=00_AQNZ0AR79KsE0exUGsrTSfuBfJpq0kzO5sgxGTwTZIa6AA&oe=6AC1E3F9',
+  latte: 'https://scontent-ams2-1.cdninstagram.com/v/t51.82787-15/776718665_17946476757266823_3092288458190742280_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=Z3Cwie8nHwkQ7kNvwEwnhC4&_nc_oc=AdrQtodvlccHUvaeHo7b2bHkP3djMDX5TGMqNPIEaS9OoQkSxtvSUUBXLkte7oWjd2U&_nc_zt=23&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=cO0pZhQ1iJyLHDhTQ7H9Fw&_nc_ss=7ba8c&oh=00_AQPZHPFo9YZI5fw4pcYvmq97sLXDnxDJuow6lCPZGeA_5w&oe=6AC1E3AE',
+  shake: 'https://scontent-ams2-1.cdninstagram.com/v/t51.82787-15/779145745_17946355131266823_6141674129459981372_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=ZCuU1PJApxgQ7kNvwER0Rna&_nc_oc=AdrMjokD5-9uOyDrezyV0GHSK0I8cT2KHL-hJPKOoiu3Raqa6aSXuijd5D9o71n3MsM&_nc_zt=23&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=cO0pZhQ1iJyLHDhTQ7H9Fw&_nc_ss=7ba8c&oh=00_AQOEJxRfbfvpkJTM8TPNKFYqjff2Qld_qrU6S8fEcTIBzw&oe=6AC1F0DE'
+};
 ---
 
-<section class="relative w-full bg-butter pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden flex items-center min-h-[90vh]">
-  <!-- Decorative Checker Cluster -->
-  <div class="absolute top-24 right-10 w-24 h-24 hidden md:grid grid-cols-3 grid-rows-3 gap-1 animate-float-slow opacity-80 z-10">
-    <div class="bg-pop2 rounded-sm"></div><div></div><div class="bg-pop2 rounded-sm"></div>
-    <div></div><div class="bg-pop2 rounded-sm"></div><div></div>
-    <div class="bg-pop2 rounded-sm"></div><div></div><div class="bg-pop2 rounded-sm"></div>
+<header class="fixed inset-x-4 top-4 z-50">
+  <nav class="mx-auto flex max-w-6xl items-center justify-between rounded-full border-2 border-anchor bg-cream/95 px-4 py-2.5 shadow-soft backdrop-blur" aria-label="Main navigation">
+    <div class="hidden items-center gap-6 lg:flex">
+      <a href="#about" class="font-mono text-xs uppercase tracking-[0.2em] transition hover:text-butter-dark">About</a>
+      <a href="#menu" class="font-mono text-xs uppercase tracking-[0.2em] transition hover:text-butter-dark">Menu</a>
+      <a href="#visit" class="font-mono text-xs uppercase tracking-[0.2em] transition hover:text-butter-dark">Visit</a>
+    </div>
+    <a href="#top" class="absolute left-1/2 -translate-x-1/2" aria-label="Refresh Cafe home">
+      <img src={profilePic} alt="Refresh Cafe logo" class="h-11 w-11 rounded-full border-2 border-anchor object-cover transition duration-300 hover:rotate-6 md:h-14 md:w-14" />
+    </a>
+    <div class="flex items-center gap-3">
+      <a href={instagramUrl} target="_blank" rel="noreferrer" class="hidden h-10 w-10 items-center justify-center rounded-full border-2 border-anchor bg-butter text-anchor transition hover:-translate-y-1 hover:shadow-hard lg:flex" aria-label="Visit Refresh Cafe on Instagram">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href={phoneLink} class="hidden h-10 items-center rounded-full border-2 border-anchor bg-pinkpop px-4 font-mono text-xs font-bold uppercase tracking-wider transition hover:-translate-y-1 hover:shadow-hard lg:flex">Call</a>
+      <button id="menu-toggle" class="flex h-11 w-11 items-center justify-center rounded-full border-2 border-anchor bg-cream lg:hidden" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+    </div>
+  </nav>
+  <div id="mobile-menu" class="fixed left-4 right-4 top-24 hidden rounded-3xl border-2 border-anchor bg-butter p-6 shadow-hard">
+    <nav class="flex flex-col gap-4" aria-label="Mobile navigation">
+      <a href="#about" class="font-display text-3xl uppercase text-anchor">About</a>
+      <a href="#menu" class="font-display text-3xl uppercase text-anchor">Menu</a>
+      <a href="#craft" class="font-display text-3xl uppercase text-anchor">Craft</a>
+      <a href="#visit" class="font-display text-3xl uppercase text-anchor">Visit</a>
+      <a href={phoneLink} class="mt-4 inline-flex items-center justify-center rounded-full border-2 border-anchor bg-anchor px-5 py-3 font-mono text-xs uppercase tracking-widest text-cream">Call us</a>
+    </nav>
   </div>
+</header>
 
-  <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full relative z-10">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-      
-      <!-- Text Content -->
-      <div class="lg:col-span-6 flex flex-col items-start z-20">
-        <h1 class="text-6xl md:text-7xl lg:text-[5.5rem] leading-[0.9] text-anchor font-display uppercase mb-6">
-          <span class="block overflow-hidden"><span class="block animate-[popIn_0.8s_ease-out_forwards]">Refresh.</span></span>
-          <span class="block overflow-hidden"><span class="block animate-[popIn_0.8s_ease-out_0.2s_forwards] opacity-0">Without</span></span>
-          <span class="block overflow-hidden"><span class="block text-butter-strong animate-[popIn_0.8s_ease-out_0.4s_forwards] opacity-0">The Guilt.</span></span>
+<section id="top" class="relative overflow-hidden bg-butter pb-28 pt-32 lg:pb-32 lg:pt-44">
+  <div class="pointer-events-none absolute right-8 top-20 hidden lg:block">
+    <Checker variant="lavender-butter" className="rotate-6 opacity-80" />
+  </div>
+  <div class="pointer-events-none absolute bottom-24 left-6 hidden lg:block">
+    <Checker variant="pink-butter" size="sm" className="-rotate-6 opacity-60" />
+  </div>
+  <div class="mx-auto max-w-7xl px-4 lg:px-8">
+    <div class="grid items-center gap-14 lg:grid-cols-12">
+      <div class="lg:col-span-5">
+        <p class="mb-4 font-mono text-xs font-bold uppercase tracking-[0.35em] text-anchor">Baghdad's First Diet Café</p>
+        <h1 class="font-display text-6xl uppercase leading-[0.95] md:text-7xl xl:text-8xl">
+          <span class="reveal block">Good for you.</span>
+          <span class="reveal block text-butter-dark" style="transition-delay:80ms">Tastes even better.</span>
         </h1>
-        
-        <p class="text-lg md:text-xl font-body text-anchor/80 max-w-md mb-8 leading-relaxed">
-          Baghdad’s first diet cafe. We bring you the perfect balance between pleasure and health — every sip designed to invigorate your body and soul.
+        <p class="reveal mt-6 max-w-md text-base leading-relaxed text-anchor/80 md:text-lg" style="transition-delay:160ms">
+          Specialty matcha, cold brew, diet lattes and date shakes — made to balance real pleasure with better-for-you ingredients. Refresh, without the guilt.
         </p>
-
-        <div class="flex flex-wrap items-center gap-4">
-          <a href="#menu" class="inline-flex items-center gap-3 bg-butter-strong text-base px-8 py-4 rounded-full font-label font-bold uppercase tracking-widest text-sm shadow-hard-dark hover:shadow-hard-pink hover:-translate-y-1 transition-all duration-300">
-            Explore Menu
-            <span class="w-6 h-6 rounded-full bg-base/20 flex items-center justify-center">
-              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        <div class="reveal mt-8 flex flex-wrap items-center gap-4" style="transition-delay:240ms">
+          <a href="#menu" class="group inline-flex items-center gap-2 rounded-full border-2 border-anchor bg-butter-dark px-7 py-3 font-mono text-xs font-bold uppercase tracking-widest text-anchor shadow-hard transition hover:-translate-y-1 hover:shadow-[6px_6px_0_0_#2A170D]">
+            Explore the menu
+            <span class="grid h-7 w-7 place-items-center rounded-full bg-anchor text-cream transition group-hover:rotate-45">
+              <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </span>
           </a>
-          <a href="https://instagram.com/refresh.baghdad" target="_blank" rel="noopener" class="font-label font-bold uppercase tracking-widest text-sm text-anchor hover:text-pop1 inline-flex items-center gap-2 group">
-            Follow @refresh.baghdad
-            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-          </a>
+          <a href={instagramUrl} target="_blank" rel="noreferrer" class="font-mono text-xs font-bold uppercase tracking-widest underline decoration-2 underline-offset-4 transition hover:text-butter-dark">View on Instagram</a>
+        </div>
+        <div class="reveal mt-12 grid max-w-md grid-cols-3 divide-x divide-anchor/30 border-t-2 border-anchor pt-6" style="transition-delay:320ms">
+          <div class="pr-4">
+            <p class="font-display text-4xl">5.0<span class="text-butter-dark">★</span></p>
+            <p class="font-mono text-[10px] uppercase tracking-widest">Google rating</p>
+          </div>
+          <div class="px-4">
+            <p class="font-display text-4xl">3.5K+</p>
+            <p class="font-mono text-[10px] uppercase tracking-widest">IG community</p>
+          </div>
+          <div class="pl-4">
+            <p class="font-display text-4xl">5</p>
+            <p class="font-mono text-[10px] uppercase tracking-widest">Google reviews</p>
+          </div>
         </div>
       </div>
-
-      <!-- Hero Images (Cutouts / Rounded Masks) -->
-      <div class="lg:col-span-6 relative h-[400px] lg:h-[600px] w-full mt-12 lg:mt-0 flex justify-center lg:justify-end">
-        <!-- Organic Blob Background -->
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-butter-strong/20 rounded-blob animate-float-slow z-0"></div>
-        
-        <!-- Main Product 1 -->
-        <div class="absolute top-10 right-10 lg:right-20 w-64 h-80 lg:w-80 lg:h-[26rem] rounded-[2rem] overflow-hidden border-4 border-anchor shadow-hard-pink transform rotate-3 z-10 hover:scale-105 transition-transform duration-500 bg-base">
-          <img src={matchaImg} alt="Refresh Iced Matcha" class="w-full h-full object-cover" fetchpriority="high" />
+      <div class="relative lg:col-span-7">
+        <div class="relative mx-auto mt-10 max-w-md lg:mx-0 lg:ml-auto lg:mt-0 lg:max-w-none">
+          <div class="absolute left-1/2 top-1/2 h-[85%] w-[85%] -translate-x-1/2 -translate-y-1/2 rounded-[45%_55%_60%_40%/50%_60%_40%_50%] bg-butter-light"></div>
+          <img src={IMG.matcha} alt="Iced matcha drink at Refresh Cafe" class="reveal relative z-10 mx-auto aspect-square w-72 -rotate-3 rounded-[45%_55%_60%_40%/55%_45%_60%_40%] border-4 border-anchor object-cover shadow-hard lg:w-[26rem]" />
+          <img src={IMG.latte} alt="Diet latte from Refresh Cafe" class="reveal absolute bottom-0 left-0 z-20 aspect-square w-40 -rotate-6 rounded-[55%_45%_60%_40%/50%_60%_40%_50%] border-4 border-anchor object-cover shadow-hard-pink lg:w-52" style="transition-delay:200ms" />
+          <img src={IMG.shake} alt="Date milkshake at Refresh Cafe" class="reveal absolute right-0 top-0 z-20 aspect-square w-36 rotate-6 rounded-[40%_60%_55%_45%/55%_40%_60%_45%] border-4 border-anchor object-cover shadow-hard-lavender lg:w-44" style="transition-delay:300ms" />
+          <span class="absolute right-4 top-4 z-30 rotate-6 rounded-full border-2 border-anchor bg-pinkpop px-4 py-2 font-mono text-[10px] font-bold uppercase tracking-widest shadow-[3px_3px_0_0_#2A170D]">100% Refresh</span>
+          <span class="absolute bottom-8 right-8 z-30 -rotate-6 rounded-full border-2 border-anchor bg-lavenderpop px-4 py-2 font-mono text-[10px] font-bold uppercase tracking-widest shadow-[3px_3px_0_0_#2A170D]">Zero guilt</span>
         </div>
-
-        <!-- Main Product 2 (Overlapping) -->
-        <div class="absolute bottom-10 left-0 lg:left-10 w-56 h-72 lg:w-72 lg:h-[22rem] rounded-[2rem] overflow-hidden border-4 border-base shadow-hard-dark transform -rotate-6 z-20 hover:scale-105 hover:-translate-y-2 transition-transform duration-500 bg-base">
-          <img src={coldBrewImg} alt="Refresh Cold Brew Coffee" class="w-full h-full object-cover" fetchpriority="high" />
-        </div>
-
-        <!-- Scattered Props / Stickers -->
-        <div class="absolute top-0 right-0 bg-pop2 text-base font-display px-4 py-1 rounded-full transform rotate-12 z-30 shadow-sm border-2 border-anchor">ZERO SUGAR!</div>
-        <div class="absolute bottom-32 right-4 lg:right-16 w-12 h-12 bg-star rounded-full flex items-center justify-center border-2 border-anchor z-30 animate-float-delay shadow-sm">
-          <svg class="w-6 h-6 text-anchor" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Stats Trio -->
-    <div class="mt-20 lg:mt-32 flex flex-wrap items-center justify-start gap-8 lg:gap-16 border-t-2 border-anchor/10 pt-8">
-      <div class="flex flex-col">
-        <div class="font-display text-4xl md:text-5xl text-anchor">5.0</div>
-        <div class="font-label text-xs font-bold tracking-widest uppercase mt-1">Google Rating</div>
-      </div>
-      <div class="w-px h-12 bg-anchor/20 hidden sm:block"></div>
-      <div class="flex flex-col">
-        <div class="font-display text-4xl md:text-5xl text-anchor">3.5K+</div>
-        <div class="font-label text-xs font-bold tracking-widest uppercase mt-1">Happy Followers</div>
-      </div>
-      <div class="w-px h-12 bg-anchor/20 hidden sm:block"></div>
-      <div class="flex flex-col">
-        <div class="font-display text-4xl md:text-5xl text-anchor">100%</div>
-        <div class="font-label text-xs font-bold tracking-widest uppercase mt-1">Guilt Free</div>
       </div>
     </div>
+  </div>
+  <div class="relative z-10 mt-20">
+    <Marquee items={['Iced Matcha', 'Cold Brew', 'Diet Latte', 'Date Shake', 'Zero Guilt']} color="pink" />
   </div>
 </section>
 
-<!-- Marquee Ribbon 1 -->
-<div class="relative z-20 -mt-6">
-  <div class="bg-pop1 text-anchor">
-    <!-- Using the reusable marquee component implicitly by mimicking styles or building here -->
-    <div class="relative w-[110%] -left-[5%] py-3 bg-pop1 text-anchor transform -rotate-2 shadow-md overflow-hidden flex z-20 border-y-2 border-anchor/90">
-      <div class="flex whitespace-nowrap animate-marquee hover:[animation-duration:40s]">
-        {Array(10).fill(0).map(() => (
-          <div class="flex items-center">
-            <span class="font-display text-2xl md:text-4xl tracking-wider px-4">ICED MATCHA</span>
-            <span class="text-xl md:text-3xl px-4">★</span>
-            <span class="font-display text-2xl md:text-4xl tracking-wider px-4">DIET LATTE</span>
-            <span class="text-xl md:text-3xl px-4">★</span>
-            <span class="font-display text-2xl md:text-4xl tracking-wider px-4">DATES SHAKE</span>
-            <span class="text-xl md:text-3xl px-4">★</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  </div>
-</div>
-
 <script>
-  // Reduced motion check
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReducedMotion) {
-    document.querySelectorAll('.animate-marquee').forEach(el => {
-      el.classList.remove('animate-marquee');
-    });
-  }
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle?.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    menu?.classList.toggle('hidden');
+  });
 </script>
