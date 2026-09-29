@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import SignatureProducts from '../components/SignatureProducts.astro';
+import Experience from '../components/Experience.astro';
+import Craft from '../components/Craft.astro';
+import Reviews from '../components/Reviews.astro';
+import VisitFooter from '../components/VisitFooter.astro';
+
+const title = "Refresh Cafe | Baghdad's First Diet Cafe";
+const description = "Experience the perfect balance between pleasure and health. Refresh Cafe is Baghdad’s first diet cafe, serving guilt-free signature drinks like Iced Matcha, Diet Latte, and Dates Milkshake.";
+---
+
+<Layout title={title} description={description}>
+  <Navbar />
+  
+  <main>
+    <Hero />
+    <About />
+    <SignatureProducts />
+    <Experience />
+    <Craft />
+    <Reviews />
+  </main>
+  
+  <VisitFooter />
+</Layout>

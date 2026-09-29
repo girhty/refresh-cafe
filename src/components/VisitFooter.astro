@@ -1,0 +1,109 @@
+---
+const logoSrc = "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-19/616235104_17913448284266823_7616257522537543457_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=109&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=Y6m5MGA-af4Q7kNvwEaaf8s&_nc_oc=AdoJYDmk00uO0U8jOWQmT_xgORL8ewmPPkv55QnIWQUEQJS4gD-HdvWGoQIvNKABwLU&_nc_zt=24&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=9zWxO4kA-G6T5PIw7a6lHQ&_nc_ss=7ba8c&oh=00_AQP8MVo4Z9DVcT9j5c_h2SQAtIev1cWF09Wlb0hFaPI2Cg&oe=6AC1F8FA";
+const drinkImg = "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-15/765175304_17943473940266823_6613519965218726446_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74";
+const address = "شارع هيل وزعفران مجاور دايت ستي, Baghdad, Baghdad Governorate, 10011, Iraq";
+const phone = "+964 773 999 9038";
+const instaUrl = "https://instagram.com/refresh.baghdad";
+const mapUrl = `https://maps.google.com/?q=${encodeURIComponent(address)}`;
+---
+
+<!-- Second Marquee (Primary Accent) -->
+<div class="w-[110%] -left-[5%] py-4 bg-butter-strong text-anchor transform rotate-2 shadow-md overflow-hidden flex z-20 border-y-2 border-anchor/90 relative">
+  <div class="flex whitespace-nowrap animate-marquee-reverse hover:[animation-duration:40s]">
+    {Array(8).fill(0).map(() => (
+      <div class="flex items-center">
+        <span class="font-display text-3xl md:text-5xl tracking-wider px-6">VISIT US TODAY</span>
+        <span class="text-2xl md:text-4xl px-6 text-pop1">★</span>
+      </div>
+    ))}
+  </div>
+</div>
+
+<footer class="bg-anchor text-base pt-32 pb-12 relative overflow-hidden">
+  
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-end">
+      
+      <!-- Hero Product Cutout Left -->
+      <div class="lg:col-span-5 relative flex justify-center lg:justify-start -mt-32 lg:-mt-48 pointer-events-none">
+        <div class="w-64 lg:w-80 h-80 lg:h-[26rem] rounded-[2rem] overflow-hidden border-4 border-base shadow-hard-pink transform -rotate-6 bg-anchor z-10 translate-y-12">
+          <img src={drinkImg} alt="Refresh Signature Drink" class="w-full h-full object-cover" loading="lazy" />
+        </div>
+        <!-- Scattered Prop -->
+        <div class="absolute top-10 right-0 lg:right-20 w-12 h-12 bg-star rounded-full border-2 border-anchor z-20 animate-float-slow"></div>
+      </div>
+
+      <!-- Info Cards Center Right -->
+      <div class="lg:col-span-5 space-y-6">
+        <!-- Address Card -->
+        <div class="bg-base text-anchor rounded-card p-8 shadow-hard-cream hover:-translate-y-2 transition-transform duration-300 flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
+          <div>
+            <div class="font-label text-xs font-bold tracking-[0.2em] text-pop1 mb-2">FIND US</div>
+            <div class="font-display text-2xl lg:text-3xl uppercase leading-[1.1] max-w-xs">
+              {address}
+            </div>
+          </div>
+          <a href={mapUrl} target="_blank" rel="noopener" class="w-12 h-12 bg-pop2 text-anchor rounded-full flex-shrink-0 flex items-center justify-center hover:bg-pop1 transition-colors border-2 border-anchor">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          </a>
+        </div>
+
+        <!-- Hours Card -->
+        <div class="bg-butter text-anchor rounded-card p-8 shadow-hard-pink hover:-translate-y-2 transition-transform duration-300 flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
+          <div>
+            <div class="font-label text-xs font-bold tracking-[0.2em] text-anchor mb-2">SEE YOU THERE</div>
+            <div class="font-display text-2xl lg:text-3xl uppercase leading-[1.1]">
+              Open Daily<br/>
+              <span class="text-base bg-anchor px-2 py-1 rounded inline-block mt-1">9:00 AM — 11:00 PM</span>
+            </div>
+          </div>
+          <a href={`tel:${phone.replace(/\s/g, '')}`} class="w-12 h-12 bg-anchor text-butter rounded-full flex-shrink-0 flex items-center justify-center hover:bg-anchor-light transition-colors border-2 border-anchor">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Vertical Tab Right Edge -->
+      <div class="hidden lg:flex lg:col-span-2 justify-end h-full items-end pb-8">
+        <a href={instaUrl} target="_blank" rel="noopener" class="bg-pop2 text-anchor py-8 px-4 rounded-t-xl hover:bg-pop1 transition-colors flex flex-col items-center gap-4 transform rotate-180" style="writing-mode: vertical-rl;">
+          <span class="font-label font-bold uppercase tracking-[0.3em] text-sm">SAY HELLO</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Bottom Row -->
+    <div class="border-t-2 border-base/20 mt-24 pt-12 flex flex-col md:flex-row justify-between items-center gap-8">
+      
+      <div class="flex items-center gap-4">
+        <img src={logoSrc} alt="Refresh Logo" class="w-12 h-12 rounded-full border-2 border-base" />
+        <div>
+          <div class="font-display text-2xl uppercase tracking-wide">Refresh Cafe</div>
+          <div class="font-label text-[10px] tracking-widest text-base/60 uppercase">Baghdad's First Diet Cafe</div>
+        </div>
+      </div>
+
+      <div class="flex gap-8 font-label text-xs uppercase tracking-widest">
+        <div class="flex flex-col gap-2">
+          <span class="text-base/50">Quick Links</span>
+          <a href="#about" class="hover:text-butter transition-colors">About Us</a>
+          <a href="#menu" class="hover:text-butter transition-colors">Menu</a>
+        </div>
+        <div class="flex flex-col gap-2">
+          <span class="text-base/50">Visit</span>
+          <a href={mapUrl} target="_blank" class="hover:text-butter transition-colors">Directions</a>
+          <a href={`tel:${phone.replace(/\s/g, '')}`} class="hover:text-butter transition-colors">{phone}</a>
+        </div>
+      </div>
+
+      <a href={instaUrl} target="_blank" rel="noopener" class="w-12 h-12 bg-base/10 hover:bg-butter hover:text-anchor rounded-full flex items-center justify-center transition-colors">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772 4.902 4.902 0 011.772-1.153c.636-.247 1.363-.416 2.427-.465C9.51 2.013 9.864 2 12.315 2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 8.117a3.117 3.117 0 110-6.234 3.117 3.117 0 010 6.234zm5.162-8.283a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" clip-rule="evenodd"/></svg>
+      </a>
+
+    </div>
+    
+    <div class="text-center mt-12 font-label text-[10px] tracking-widest text-base/40 uppercase">
+      © {new Date().getFullYear()} Refresh Cafe. All rights reserved.
+    </div>
+
+  </footer>

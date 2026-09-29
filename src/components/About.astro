@@ -1,0 +1,35 @@
+---
+import photo2 from '../assets/refresh-interior.jpg'; // Placeholder for real image import if needed
+const cozyImg = "https://lh3.googleusercontent.com/grass-cs/ACvplmMKR-LKYu-aapPFxWUQ4zOl5nWICwayH-OkmuF6ZBKJgTQF52V004X6q0EseAPsxkDGNlVXs0TuEmqlXfJq1ukYNSMpksDPKg1u7OWXSneH9pOanTugCIZ05HNx9NGD-HdUwlmtRrIyOGg=w408-h544-k-no";
+const vibesImg = "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-15/765175304_17943473940266823_6613519965218726446_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=zSryh1NaIckQ7kNvwG3zLik&_nc_oc=AdrpU3kvQbihxR-w3b4-hCgu7PSCvhRJTZgkZeOedF8g24BxUt28SAiTvYe38Ker59M&_nc_zt=23&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=cO0pZhQ1iJyLHDhTQ7H9Fw&_nc_ss=7ba8c&oh=00_AQPucM398AbbJ78lpFmU8ao3dJSwi002mEO_9IbhV1y5QQ&oe=6AC1EAF1";
+---
+
+<section id="about" class="py-24 lg:py-40 bg-base overflow-hidden relative">
+  <div class="max-w-5xl mx-auto px-6 lg:px-12 text-center relative z-10">
+    
+    <div class="font-label text-xs font-bold tracking-[0.2em] text-pop1 mb-8">ABOUT US</div>
+    
+    <h2 class="text-4xl md:text-5xl lg:text-[4.5rem] leading-[1.05] text-anchor font-display uppercase mb-12 reveal-up">
+      A REAL BALANCE BETWEEN <br class="hidden md:block"/>
+      <span class="text-butter-strong">PLEASURE AND HEALTH.</span>
+    </h2>
+    
+    <a href="https://instagram.com/refresh.baghdad" target="_blank" class="inline-flex items-center gap-3 bg-anchor text-base px-8 py-4 rounded-full font-label font-bold uppercase tracking-widest text-sm shadow-hard-pink hover:shadow-hard-dark hover:-translate-y-1 transition-all duration-300 mb-20">
+      See Our Story
+      <span class="w-6 h-6 rounded-full bg-base/20 flex items-center justify-center">
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+      </span>
+    </a>
+
+  </div>
+
+  <!-- Floating Tilted Photos -->
+  <div class="absolute top-20 left-10 lg:left-32 w-48 lg:w-64 aspect-[3/4] rounded-2xl overflow-hidden border-8 border-base shadow-float transform -rotate-6 z-0 hidden md:block reveal-up" style="transition-delay: 100ms;">
+    <img src={cozyImg} alt="Cozy corner inside Refresh Cafe" class="w-full h-full object-cover" />
+  </div>
+
+  <div class="absolute bottom-32 right-10 lg:right-32 w-56 lg:w-72 aspect-square rounded-2xl overflow-hidden border-8 border-base shadow-float transform rotate-6 z-0 hidden md:block reveal-up" style="transition-delay: 200ms;">
+    <img src={vibesImg} alt="Refreshing drinks" class="w-full h-full object-cover" />
+  </div>
+
+</section>

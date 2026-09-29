@@ -1,0 +1,51 @@
+---
+const steps = [
+  { num: "01", label: "SELECT", title: "BEANS & LEAVES WORTH CHOOSING", desc: "We source premium, all-natural ingredients so you get maximum flavor without artificial additives.", img: "https://scontent-ams2-1.cdninstagram.com/v/t15.5256-10/780949353_1596279635189869_1153598757660377946_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74" },
+  { num: "02", label: "PREPARE", title: "MIXED FOR THE CUP", desc: "Every diet drink is carefully measured to keep the calories low and the satisfaction high.", img: "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-15/794032623_17948492067266823_7578226426693012433_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74" },
+  { num: "03", label: "SERVE", title: "MADE WITH CARE", desc: "Served with a smile in our cozy Baghdad spot. Your daily.refresh awaits.", img: "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-15/776718665_17946476757266823_3092288458190742280_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74" }
+];
+const activeStep = steps[0];
+---
+
+<section class="py-24 lg:py-40 bg-base-warm relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="mb-16">
+      <div class="font-label text-xs font-bold tracking-[0.2em] text-pop1 mb-6">THE CRAFT</div>
+      <h2 class="text-5xl lg:text-[5rem] leading-[0.9] text-anchor font-display uppercase mb-8">
+        SIMPLE INGREDIENTS.<br/>
+        <span class="text-butter-strong">CAREFUL HANDS.</span>
+      </h2>
+    </div>
+
+    <div class="bg-anchor rounded-card p-8 lg:p-12 text-base relative">
+      <!-- Top Feature Active Step -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
+        <div class="reveal-up">
+          <div class="flex items-center gap-4 mb-8">
+            <div class="w-12 h-12 bg-pop2 text-anchor font-display text-2xl flex items-center justify-center rounded-xl border-2 border-base">{activeStep.num}</div>
+            <div class="font-label text-xs font-bold tracking-widest text-butter">{activeStep.label}</div>
+          </div>
+          <h3 class="text-4xl lg:text-5xl font-display uppercase leading-none mb-6">{activeStep.title}</h3>
+          <p class="font-body text-base/80 text-lg">{activeStep.desc}</p>
+        </div>
+        
+        <div class="relative reveal-up" style="transition-delay: 200ms;">
+          <!-- Hard pink offset shadow -->
+          <div class="rounded-2xl overflow-hidden aspect-square border-4 border-base relative z-10 bg-anchor shadow-hard-pink">
+            <img src={activeStep.img} alt={activeStep.title} class="w-full h-full object-cover" loading="lazy" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border-t-2 border-base/20">
+        {steps.map((step, idx) => (
+          <button class={`text-left py-8 px-6 group hover:bg-base/5 transition-colors ${idx !== steps.length - 1 ? 'md:border-r-2 border-b-2 md:border-b-0 border-base/20' : ''} ${step.num === activeStep.num ? 'bg-base/10' : ''}`}>
+            <div class="font-label text-xs font-bold tracking-widest text-butter/60 mb-2 group-hover:text-butter transition-colors">{step.num} / {step.label}</div>
+            <div class="font-display text-2xl uppercase leading-none group-hover:text-pop1 transition-colors">{step.title}</div>
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

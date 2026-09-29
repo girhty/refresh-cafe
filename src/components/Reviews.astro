@@ -1,0 +1,79 @@
+---
+const logoSrc = "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-19/616235104_17913448284266823_7616257522537543457_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=109&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=Y6m5MGA-af4Q7kNvwEaaf8s&_nc_oc=AdoJYDmk00uO0U8jOWQmT_xgORL8ewmPPkv55QnIWQUEQJS4gD-HdvWGoQIvNKABwLU&_nc_zt=24&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=9zWxO4kA-G6T5PIw7a6lHQ&_nc_ss=7ba8c&oh=00_AQP8MVo4Z9DVcT9j5c_h2SQAtIev1cWF09Wlb0hFaPI2Cg&oe=6AC1F8FA";
+
+const smallReviews = [
+  { name: "Sarah A.", text: "Finally a place in Baghdad where I can enjoy a sweet treat without ruining my diet! The dates milkshake is unreal.", tag: "Regular" },
+  { name: "Omar K.", text: "The iced matcha here is top tier. Perfect balance of flavor, and the atmosphere is so cozy and welcoming.", tag: "Local Guide" },
+  { name: "Zainab M.", text: "Refresh Cafe lives up to its name. Everything is fresh, healthy, and incredibly tasty. Highly recommend!", tag: "Foodie" }
+];
+---
+
+<section class="py-24 lg:py-40 bg-base relative">
+  
+  <!-- Faded Checker Lead-in -->
+  <div class="absolute top-0 left-0 w-full h-24 bg-checker-faded -translate-y-1/2 z-0"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+    <h2 class="text-center text-4xl md:text-5xl lg:text-[4.5rem] leading-[1] text-anchor font-display uppercase mb-20 reveal-up">
+      A FEW WORDS FROM <br/>
+      <span class="text-pop1">OUR PEOPLE.</span>
+    </h2>
+
+    <!-- Featured Review -->
+    <div class="bg-butter rounded-card p-8 lg:p-16 mb-12 relative border-4 border-anchor shadow-hard-dark reveal-up">
+      <!-- Giant Quote Mark -->
+      <div class="absolute top-4 right-8 text-[12rem] leading-none font-display text-pop2 opacity-50 select-none">"</div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center relative z-10">
+        <div class="md:col-span-4">
+          <div class="aspect-square rounded-2xl overflow-hidden border-4 border-anchor bg-base">
+            <img src={logoSrc} alt="Happy Customer" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+        </div>
+        
+        <div class="md:col-span-8 flex flex-col justify-center">
+          <div class="flex gap-1 text-star mb-6 text-2xl">
+            ★★★★★
+          </div>
+          <h3 class="text-3xl lg:text-4xl font-display uppercase leading-tight mb-8">
+            The perfect spot for anyone who loves coffee but cares about their health.
+          </h3>
+          <div class="text-right">
+            <div class="font-label text-sm font-bold uppercase tracking-widest text-anchor">Ali H.</div>
+            <div class="font-body text-xs text-anchor/70">Google Review</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Small Review Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      {smallReviews.map((r) => (
+        <div class="bg-white border-2 border-anchor/10 rounded-2xl p-6 hover:shadow-hard-cream hover:-translate-y-2 transition-all duration-300 cursor-pointer reveal-up">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 bg-anchor text-base rounded-full flex items-center justify-center font-display text-xl">
+              {r.name.charAt(0)}
+            </div>
+            <div>
+              <div class="font-label text-xs font-bold uppercase tracking-widest">{r.name}</div>
+              <div class="font-body text-[10px] text-anchor/60 uppercase">{r.tag}</div>
+            </div>
+          </div>
+          <p class="font-body text-sm text-anchor/80 leading-relaxed line-clamp-3">
+            {r.text}
+          </p>
+          <div class="mt-4 flex text-star text-sm">★★★★★</div>
+        </div>
+      ))}
+    </div>
+    
+    <!-- Google Rating Badge -->
+    <div class="mt-16 flex flex-col items-center justify-center">
+      <div class="inline-flex items-center gap-4 bg-white px-6 py-3 rounded-full border-2 border-anchor/10 shadow-sm">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="w-6 h-6" />
+        <span class="font-label font-bold uppercase tracking-widest text-sm text-anchor">5.0 on Google Reviews</span>
+      </div>
+    </div>
+
+  </div>
+</section>

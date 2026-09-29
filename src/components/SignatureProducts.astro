@@ -1,0 +1,132 @@
+---
+const products = [
+  {
+    name: "Iced Matcha",
+    desc: "Premium matcha, almond milk, zero-calorie sweetener.",
+    price: "ASK IN STORE",
+    img: "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-15/794032623_17948492067266823_7578226426693012433_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=NYjctEAvy7cQ7kNvwFHmiSP&_nc_oc=Adph5_RVWf2icuScJwmhAxHO8P_RB8oZUWFhxo62FNyTEbrzne6WhCP-EQgxmMBZNo4&_nc_zt=23&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=cO0pZhQ1iJyLHDhTQ7H9Fw&_nc_ss=7ba8c&oh=00_AQNZ0AR79KsE0exUGsrTSfuBfJpq0kzO5sgxGTwTZIa6AA&oe=6AC1E3F9",
+    featured: true
+  },
+  {
+    name: "Diet Latte",
+    desc: "Rich espresso, steamed skim milk, sugar-free vanilla.",
+    price: "ASK IN STORE",
+    img: "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-15/776718665_17946476757266823_3092288458190742280_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=Z3Cwie8nHwkQ7kNvwEwnhC4&_nc_oc=AdrQtodvlccHUvaeHo7b2bHkP3djMDX5TGMqNPIEaS9OoQkSxtvSUUBXLkte7oWjd2U&_nc_zt=23&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=cO0pZhQ1iJyLHDhTQ7H9Fw&_nc_ss=7ba8c&oh=00_AQPZHPFo9YZI5fw4pcYvmq97sLXDnxDJuow6lCPZGeA_5w&oe=6AC1E3AE",
+    featured: false
+  },
+  {
+    name: "Dates Milkshake",
+    desc: "Blended dates, low-fat milk, crushed ice, cinnamon.",
+    price: "ASK IN STORE",
+    img: "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-15/779145745_17946355131266823_6141674129459981372_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=ZCuU1PJApxgQ7kNvwER0Rna&_nc_oc=AdrMjokD5-9uOyDrezyV0GHSK0I8cT2KHL-hJPKOoiu3Raqa6aSXuijd5D9o71n3MsM&_nc_zt=23&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=cO0pZhQ1iJyLHDhTQ7H9Fw&_nc_ss=7ba8c&oh=00_AQOEJxRfbfvpkJTM8TPNKFYqjff2Qld_qrU6S8fEcTIBzw&oe=6AC1F0DE",
+    featured: false
+  },
+  {
+    name: "Cold Brew",
+    desc: "Slow-extracted, bold coffee served over ice.",
+    price: "ASK IN STORE",
+    img: "https://scontent-ams2-1.cdninstagram.com/v/t15.5256-10/780949353_1596279635189869_1153598757660377946_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=siUSfyJphccQ7kNvwGXGNh3&_nc_oc=Adp5ClswIvrBuk9UMFF2r4wynoSF4eYDZSTdD_YMF--XlB9UJktW_sGhTUrsOYx9e-4&_nc_zt=23&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=cO0pZhQ1iJyLHDhTQ7H9Fw&_nc_ss=7ba8c&oh=00_AQMAFgIL7451-Jw8cT4NeJMKx_lYUvv1mzkKJx0-ZQRwJQ&oe=6AC1E8E3",
+    featured: false
+  }
+];
+---
+
+<section id="menu" class="relative bg-anchor text-base pt-24 pb-32 lg:pt-32 lg:pb-48">
+  
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+      <div>
+        <div class="font-label text-xs font-bold tracking-[0.2em] text-butter mb-4">SIGNATURE SIPS</div>
+        <h2 class="text-5xl lg:text-7xl leading-[0.9] text-butter font-display uppercase">
+          A LITTLE DIFFERENT.<br/>
+          <span class="text-pop1">DELICIOUSLY SO.</span>
+        </h2>
+      </div>
+      
+      <div class="max-w-sm">
+        <p class="font-body text-base/80 text-sm mb-6">
+          Every drink on our menu is crafted to satisfy your cravings without breaking your diet. Real ingredients, honest flavors.
+        </p>
+        <!-- Checker cluster -->
+        <div class="grid grid-cols-4 gap-1 w-16 opacity-80">
+          <div class="bg-butter aspect-square rounded-sm"></div><div class="bg-pop2 aspect-square rounded-sm"></div><div></div><div class="bg-butter aspect-square rounded-sm"></div>
+          <div class="bg-pop2 aspect-square rounded-sm"></div><div></div><div class="bg-butter aspect-square rounded-sm"></div><div class="bg-pop2 aspect-square rounded-sm"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Carousel -->
+    <div class="relative w-full overflow-visible">
+      <div class="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-20 hide-scrollbar items-end pt-12">
+        
+        {products.map((p, idx) => (
+          <div class={`snap-center flex-shrink-0 relative rounded-card flex flex-col items-center p-6 transition-all duration-500 ${p.featured 
+            ? 'w-[320px] lg:w-[380px] bg-butter text-anchor border-4 border-anchor shadow-hard-pink z-10 scale-100 mb-8' 
+            : 'w-[280px] bg-base/5 text-base border-2 border-base/20 hover:border-base/50 z-0 scale-95 opacity-80 hover:opacity-100 hover:scale-100'}`}>
+            
+            {p.featured && (
+              <div class="absolute -top-6 -right-2 bg-pop1 text-anchor font-label text-xs font-bold px-4 py-1 rounded-full border-2 border-anchor rotate-6 z-20">
+                {p.price}
+              </div>
+            )}
+            {!p.featured && (
+              <div class="absolute -top-4 right-4 bg-pop2 text-anchor font-label text-[10px] font-bold px-3 py-1 rounded-full border-2 border-anchor -rotate-3 z-20">
+                {p.price}
+              </div>
+            )}
+            
+            <!-- Image Breaking out of top -->
+            <div class={`w-full aspect-square rounded-full overflow-hidden border-4 border-anchor bg-base shadow-sm ${p.featured ? '-mt-20 mb-6 w-56 h-56' : '-mt-16 mb-4 w-40 h-40'}`}>
+              <img src={p.img} alt={p.name} class="w-full h-full object-cover" loading="lazy" />
+            </div>
+
+            <h3 class="text-3xl font-display uppercase text-center leading-none mb-2">{p.name}</h3>
+            <p class="font-label text-[10px] text-center opacity-80 mb-6 uppercase tracking-wider">{p.desc}</p>
+            
+            {p.featured ? (
+              <div class="w-full space-y-4">
+                <div class="flex gap-2 justify-center">
+                  <span class="px-3 py-1 bg-anchor/10 rounded-full text-xs font-bold font-label cursor-pointer hover:bg-anchor hover:text-butter transition-colors">S</span>
+                  <span class="px-3 py-1 bg-anchor text-butter rounded-full text-xs font-bold font-label cursor-pointer">M</span>
+                  <span class="px-3 py-1 bg-anchor/10 rounded-full text-xs font-bold font-label cursor-pointer hover:bg-anchor hover:text-butter transition-colors">L</span>
+                </div>
+                
+                <div class="w-full px-2">
+                  <div class="flex justify-between font-label text-[10px] mb-1 uppercase opacity-60">
+                    <span>Mild</span><span>Bold</span>
+                  </div>
+                  <div class="h-2 w-full bg-anchor/20 rounded-full relative">
+                    <div class="absolute top-0 left-0 h-full w-3/4 bg-anchor rounded-full"></div>
+                    <div class="absolute top-1/2 left-3/4 -translate-y-1/2 -translate-x-1/2 w-4 h-4 bg-base border-2 border-anchor rounded-full"></div>
+                  </div>
+                </div>
+
+                <a href="https://instagram.com/refresh.baghdad" target="_blank" class="w-full mt-4 bg-anchor text-butter py-3 rounded-full font-label font-bold uppercase tracking-widest text-xs flex justify-center items-center gap-2 hover:bg-anchor-light transition-colors">
+                  View on Insta
+                </a>
+              </div>
+            ) : (
+              <a href="https://instagram.com/refresh.baghdad" target="_blank" class="bg-butter text-anchor px-4 py-2 rounded-full font-label font-bold uppercase tracking-widest text-[10px] flex items-center gap-1 hover:bg-butter-strong transition-colors">
+                View <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              </a>
+            )}
+          </div>
+        ))}
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Large Checkerboard transition -->
+  <div class="absolute bottom-0 left-0 w-full h-16 bg-checker-dark-cream z-30 translate-y-1/2"></div>
+</section>
+
+<style>
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
